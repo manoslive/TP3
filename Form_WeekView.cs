@@ -123,13 +123,33 @@ namespace Compact_Agenda
             Pen pen = new Pen(Color.LightGray, 1);
             for (int dayNum = 0; dayNum < 7; dayNum++)
             {
-                location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * dayNum), 0);
-                String headerText = dayNames[dayNum];
-                String headerDate = date.ToShortDateString();
-                DC.DrawLine(pen, location.X, 0, location.X, PN_DaysHeader.Height);
-                DC.DrawString(headerText, PN_DaysHeader.Font, brush, location);
-                DC.DrawString(headerDate, PN_DaysHeader.Font, brush, location.X, location.Y + 14);
+                if(Convert.ToInt32(DateTime.Now.DayOfWeek) == dayNum)
+                {
+                    Panel panelToday = new Panel();
+                    panelToday.BackColor = Color.LightGray;
+                    panelToday.Height = PN_DaysHeader.Height;
+                    panelToday.Width = (PN_DaysHeader.Width / 7) ;
+                    panelToday.Location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * dayNum), 0);
+                    location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * dayNum), 0);
+                    DC.DrawLine(pen, location.X, 0, location.X, panelToday.Height);
+                    String headerText = dayNames[dayNum];
+                    String headerDate = date.ToShortDateString();
+                    DC.DrawString(headerText, panelToday.Font, brush, location);
+                    DC.DrawString(headerDate, panelToday.Font, brush, location.X, location.Y + 14);
+                    panelToday.Focus();
+                }
+                else
+                {
+                    location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * dayNum), 0);
+                    String headerText = dayNames[dayNum];
+                    String headerDate = date.ToShortDateString();
+                    DC.DrawLine(pen, location.X, 0, location.X, PN_DaysHeader.Height);
+                    DC.DrawString(headerText, PN_DaysHeader.Font, brush, location);
+                    DC.DrawString(headerDate, PN_DaysHeader.Font, brush, location.X, location.Y + 14);
+                    
+                }
                 date = date.AddDays(1);
+
             }
             location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * 7), 0);
             DC.DrawLine(pen, location.X - 1, 0, location.X - 1, PN_DaysHeader.Height);

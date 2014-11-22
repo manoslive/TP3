@@ -279,7 +279,7 @@
             // 
             this.PN_Content.Location = new System.Drawing.Point(36, 0);
             this.PN_Content.Name = "PN_Content";
-            this.PN_Content.Size = new System.Drawing.Size(628, 452);
+            this.PN_Content.Size = new System.Drawing.Size(628, 463);
             this.PN_Content.TabIndex = 0;
             this.PN_Content.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Content_Paint);
             this.PN_Content.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseClick);
