@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZoomSliderProject;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -28,6 +29,7 @@ namespace Compact_Agenda
     {
         public string ConnexionString;
         private DateTime _CurrentWeek;
+        private ZoomSlider ZS_Zoom = new ZoomSlider();
         private Events evenement = new Events();
         private int minInterval = 5;
         public DateTime CurrentWeek
@@ -89,7 +91,7 @@ namespace Compact_Agenda
         private void Fill_Agenda(Graphics DC)
         {
             Brush brush = new SolidBrush(Color.Black);
-            Pen pen1 = new Pen(Properties.Settings.Default.colorLigneVerticale, 1);
+            Pen pen1 = new Pen(Properties.Settings.Default.colorLignePrincipale, 1);
             Pen pen2 = new Pen(Properties.Settings.Default.colorLigneSecondaire, 1);
             pen2.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
             for (int hour = 0; hour < 24; hour++)
@@ -682,7 +684,7 @@ namespace Compact_Agenda
             ColorDialog dlg = new ColorDialog();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                Properties.Settings.Default.colorLigneVerticale = dlg.Color;
+                Properties.Settings.Default.colorLignePrincipale = dlg.Color;
                 Properties.Settings.Default.Save();
             }
             PN_Content.Refresh();
@@ -709,6 +711,19 @@ namespace Compact_Agenda
             Properties.Settings.Default.positionWeekView = this.Location;
             Properties.Settings.Default.tailleWeekView = this.Size;
             Properties.Settings.Default.Save();
+        }
+
+        private void PN_Hours_MouseEnter(object sender, EventArgs e)
+        {
+            ZS_Zoom.Visible = true;
+            ZS_Zoom.Parent = PN_Scroll;
+            ZS_Zoom.Focus();
+           
+        }
+
+        private void PN_Hours_MouseLeave(object sender, EventArgs e)
+        {
+            ZS_Zoom.Visible = false;
         }
     }
 }
