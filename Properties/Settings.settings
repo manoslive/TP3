@@ -17,7 +17,7 @@
     <Setting Name="fontEvenementBold" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="colorLigneVerticale" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="colorLignePrincipale" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">LightGray</Value>
     </Setting>
     <Setting Name="colorFondContent" Type="System.Drawing.Color" Scope="User">

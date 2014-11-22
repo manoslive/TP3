@@ -84,12 +84,12 @@ namespace Compact_Agenda.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("LightGray")]
-        public global::System.Drawing.Color colorLigneVerticale {
+        public global::System.Drawing.Color colorLignePrincipale {
             get {
-                return ((global::System.Drawing.Color)(this["colorLigneVerticale"]));
+                return ((global::System.Drawing.Color)(this["colorLignePrincipale"]));
             }
             set {
-                this["colorLigneVerticale"] = value;
+                this["colorLignePrincipale"] = value;
             }
         }
         

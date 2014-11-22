@@ -34,10 +34,8 @@
             this.TBX_Description = new System.Windows.Forms.TextBox();
             this.DTP_Date = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.DTP_Starting = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.DTP_Ending = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -132,17 +130,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Date :";
             // 
-            // DTP_Starting
-            // 
-            this.DTP_Starting.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTP_Starting.Location = new System.Drawing.Point(445, 326);
-            this.DTP_Starting.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.DTP_Starting.Name = "DTP_Starting";
-            this.DTP_Starting.Size = new System.Drawing.Size(120, 26);
-            this.DTP_Starting.TabIndex = 4;
-            this.DTP_Starting.Visible = false;
-            this.DTP_Starting.ValueChanged += new System.EventHandler(this.DTP_Starting_ValueChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -162,17 +149,6 @@
             this.label5.Size = new System.Drawing.Size(39, 20);
             this.label5.TabIndex = 1;
             this.label5.Text = "Fin :";
-            // 
-            // DTP_Ending
-            // 
-            this.DTP_Ending.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTP_Ending.Location = new System.Drawing.Point(445, 366);
-            this.DTP_Ending.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.DTP_Ending.Name = "DTP_Ending";
-            this.DTP_Ending.Size = new System.Drawing.Size(120, 26);
-            this.DTP_Ending.TabIndex = 45;
-            this.DTP_Ending.Visible = false;
-            this.DTP_Ending.ValueChanged += new System.EventHandler(this.DTP_Ending_ValueChanged);
             // 
             // groupBox1
             // 
@@ -418,8 +394,6 @@
             this.Controls.Add(this.PB_Travail);
             this.Controls.Add(this.PB_General);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.DTP_Ending);
-            this.Controls.Add(this.DTP_Starting);
             this.Controls.Add(this.DTP_Date);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TBX_Description);
@@ -460,10 +434,8 @@
         private System.Windows.Forms.TextBox TBX_Description;
         private System.Windows.Forms.DateTimePicker DTP_Date;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker DTP_Starting;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker DTP_Ending;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
