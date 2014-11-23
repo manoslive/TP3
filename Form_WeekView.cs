@@ -633,7 +633,7 @@ namespace Compact_Agenda
 
         private void CMI_Dupliquer_Click(object sender, EventArgs e)
         {
-            Event newEvent = new Event(evenement.TargetEvent.Id, evenement.TargetEvent.Title, evenement.TargetEvent.Description, evenement.TargetEvent.Starting.AddDays(1), evenement.TargetEvent.Ending.AddDays(1));
+            Event newEvent = new Event(evenement.TargetEvent.Id, evenement.TargetEvent.Title, evenement.TargetEvent.Description, evenement.TargetEvent.Starting.AddDays(1), evenement.TargetEvent.Ending.AddDays(1), evenement.TargetEvent.Category);
             evenement.Add(newEvent);
             GetWeekEvents();
             PN_Content.Refresh();

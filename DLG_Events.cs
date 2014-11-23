@@ -63,7 +63,14 @@ namespace Compact_Agenda
 
         private void TBX_Title_TextChanged(object sender, EventArgs e)
         {
-            Event.Title = TBX_Title.Text;
+            if (TBX_Title.TextLength != 0)
+                Event.Title = TBX_Title.Text;
+            else
+            {
+               MessageBox.Show("Erreur: Veuillez entrer un titre!");
+               TBX_Title.ForeColor = Color.Red;
+            }
+
         }
 
         private void TBX_Description_TextChanged(object sender, EventArgs e)

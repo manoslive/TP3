@@ -4,14 +4,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Compact_Agenda
 {
+
     public class Event
     {
         public string Id { get; set; }
         public Color eventColor = Color.LightBlue;
         public string Title { get; set; }
+        public int Category { get; set; }
         public string Description { get; set; }
         private DateTime _start;
         public DateTime Starting { get { return _start; } set { _start = RoundToMinutes(value, 5); } }
@@ -24,21 +25,26 @@ namespace Compact_Agenda
             Starting = DateTime.Now;
             Ending = DateTime.Now;
         }
-        public Event(string Id, string Title, string Description, DateTime Starting, DateTime Ending)
+        public Event(string Id, string Title, string Description, DateTime Starting, DateTime Ending, int Category = 0)
         {
             this.Id = Id;
             this.Title = Title;
-            this.Description = Description; ;
+            this.Category = Category;
             this.Starting = Starting;
             this.Ending = Ending;
+            this.Description = Description;
         }
-        public Event(string Id, string Title, string Description, string Starting, string Ending)
+        public Event(string Id, string Title, string Description, string Starting, string Ending, string Category)
         {
             this.Id = Id;
             this.Title = TextFilter.FromSql(Title);
             this.Description = TextFilter.FromSql(Description);
             this.Starting = DateTime.Parse(Starting);
             this.Ending = DateTime.Parse(Ending);
+            if (Category != "")
+                this.Category = int.Parse(Category);
+            else
+                this.Category = 0;
         }
 
         public Event(Event copy)
@@ -48,6 +54,7 @@ namespace Compact_Agenda
             Description = copy.Description;
             Starting = copy.Starting;
             Ending = copy.Ending;
+            Category = copy.Category;
             ParentPanel = copy.ParentPanel;
         }
         public Event Klone()

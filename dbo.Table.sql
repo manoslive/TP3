@@ -1,8 +1,10 @@
-﻿CREATE TABLE [dbo].[Table]
-(
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [Title] NVARCHAR(50) NULL, 
-    [Description] NVARCHAR(MAX) NULL, 
-    [Start] DATETIME NULL, 
-    [End] DATETIME NULL
-)
+﻿CREATE TABLE [dbo].[EVENTS] (
+    [Id]          INT            IDENTITY (1, 1) NOT NULL,
+    [Title]       NVARCHAR (50)  NULL,
+    [Description] NVARCHAR (MAX) NULL,
+    [Starting]    DATETIME       NULL,
+    [Ending]      DATETIME       NULL,
+    [Category] INT NULL, 
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
