@@ -121,33 +121,34 @@ namespace Compact_Agenda
             Point location;
             DateTime date = _CurrentWeek;
             string[] dayNames = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.DayNames;//[col].Substring(0, 3).ToUpper();
-            Brush brush = new SolidBrush(Color.White);
             Pen pen = new Pen(Color.LightGray, 1);
             for (int dayNum = 0; dayNum < 7; dayNum++)
             {
                 location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * dayNum), 0);
-                if(Convert.ToInt32(DateTime.Now.DayOfWeek) == dayNum)
+                if (Convert.ToInt32(DateTime.Now.DayOfWeek) == dayNum && DateTime.Now.Day == date.Day)
                 {
-                    PN_Today.Location = location;
-                    PN_Today.Width = PN_DaysHeader.Width / 7;
-                    PN_Today.Height = PN_DaysHeader.Height;
+                    pen = new Pen(Color.Black, 1);
+                    Brush brush = new SolidBrush(Color.Black);
                     PN_Today.Visible = true;
-                    PN_Today.Focus();
+                    PN_Today.Location = location;
+                    PN_Today.Width = PN_DaysHeader.Width / 7 - 1;
+                    PN_Today.Height = PN_DaysHeader.Height;
                     //--Ecriture dans le nouveau panel d'aujourd'hui
                     String headerText = dayNames[dayNum];
                     String headerDate = date.ToShortDateString();
-                    DC.DrawLine(pen, location.X, 0, location.X, PN_Today.Height);
-                    DC.DrawString(headerText, PN_Today.Font, brush, location);
-                    DC.DrawString(headerDate, PN_Today.Font, brush, location.X, location.Y + 14);
-                    PN_Today.Refresh();
+                    DC.DrawLine(pen, location.X+1, 0, location.X+1, PN_DaysHeader.Height);
+                    DC.DrawString(headerText, PN_DaysHeader.Font, brush, location.X + 26, location.Y); //mettre des des valeurs pourcentage pour centrer lecriture
+                    DC.DrawString(headerDate, PN_DaysHeader.Font, brush, location.X + 20, location.Y + 14);//ici
                 }
                 else
-                {                 
+                {
+                    pen = new Pen(Color.LightGray, 1);
+                    Brush brush = new SolidBrush(Color.White);
                     String headerText = dayNames[dayNum];
                     String headerDate = date.ToShortDateString();
                     DC.DrawLine(pen, location.X, 0, location.X, PN_DaysHeader.Height);
-                    DC.DrawString(headerText, PN_DaysHeader.Font, brush, location);
-                    DC.DrawString(headerDate, PN_DaysHeader.Font, brush, location.X, location.Y + 14);
+                    DC.DrawString(headerText, PN_DaysHeader.Font, brush, location.X + 26, location.Y);//ici
+                    DC.DrawString(headerDate, PN_DaysHeader.Font, brush, location.X + 20, location.Y + 14);//ici
                     
                 }
                 date = date.AddDays(1);
@@ -745,5 +746,18 @@ namespace Compact_Agenda
         {
             ZS_Zoom.Visible = false;
         }
+
+        private void PN_Today_Paint(object sender, PaintEventArgs e)
+        {
+            if (_CurrentWeek.Day == DateTime.Now.Day)
+            {
+                PN_Today.Visible = true;
+                Fill_Days_Header(e.Graphics);
+            }
+            else
+                PN_Today.Visible = false;
+                
+        }
+
     }
 }

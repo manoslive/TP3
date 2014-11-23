@@ -55,9 +55,9 @@
             this.couleurDeLaPoliceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
-            this.PN_Today = new System.Windows.Forms.Panel();
             this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
             this.PN_DaysHeader = new Compact_Agenda.DoubleBufferPanel();
+            this.PN_Today = new System.Windows.Forms.Panel();
             this.PN_Frame.SuspendLayout();
             this.CM_Event.SuspendLayout();
             this.CM_EnteteJour.SuspendLayout();
@@ -292,16 +292,6 @@
             this.PN_Content.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseUp);
             this.PN_Content.Resize += new System.EventHandler(this.PN_Content_Resize);
             // 
-            // PN_Today
-            // 
-            this.PN_Today.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.PN_Today.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PN_Today.Location = new System.Drawing.Point(261, 1);
-            this.PN_Today.Name = "PN_Today";
-            this.PN_Today.Size = new System.Drawing.Size(90, 31);
-            this.PN_Today.TabIndex = 0;
-            this.PN_Today.Visible = false;
-            // 
             // PN_Hours
             // 
             this.PN_Hours.Location = new System.Drawing.Point(0, 0);
@@ -324,6 +314,17 @@
             this.PN_DaysHeader.TabIndex = 0;
             this.PN_DaysHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_DaysHeader_Paint);
             this.PN_DaysHeader.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_DaysHeader_MouseClick);
+            // 
+            // PN_Today
+            // 
+            this.PN_Today.BackColor = System.Drawing.Color.Silver;
+            this.PN_Today.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.PN_Today.Location = new System.Drawing.Point(261, 1);
+            this.PN_Today.Name = "PN_Today";
+            this.PN_Today.Size = new System.Drawing.Size(90, 31);
+            this.PN_Today.TabIndex = 0;
+            this.PN_Today.Visible = false;
+            this.PN_Today.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Today_Paint);
             // 
             // Form_WeekView
             // 
