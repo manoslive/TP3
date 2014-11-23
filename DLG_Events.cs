@@ -188,14 +188,24 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
-                if (NUD_DebutHeure.Value == 22 && NUD_DebutMinute.Value == 60)
+                if (NUD_DebutHeure.Value != NUD_FinHeure.Value)
                 {
-                    NUD_DebutMinute.Value = 55;
+                    if (NUD_DebutHeure.Value == 22 && NUD_DebutMinute.Value == 60)
+                    {
+                        NUD_DebutMinute.Value = 55;
+                    }
+                    else if (NUD_DebutMinute.Value == 60)
+                    {
+                        NUD_DebutMinute.Value = 0;
+                        NUD_DebutHeure.Value++;
+                    }
                 }
-                else if (NUD_DebutMinute.Value == 60)
+                else //si l'heure de début et de fin sont pareilles
                 {
-                    NUD_DebutMinute.Value = 0;
-                    NUD_DebutHeure.Value++;
+                    if(NUD_DebutMinute.Value >= (NUD_FinMinute.Value-30))
+                    {
+                        NUD_FinMinute.Value +=5;
+                    }
                 }
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
