@@ -24,15 +24,16 @@ namespace Compact_Agenda
         {
             Starting = DateTime.Now;
             Ending = DateTime.Now;
+            Category = 0;
         }
         public Event(string Id, string Title, string Description, DateTime Starting, DateTime Ending, int Category = 0)
         {
             this.Id = Id;
             this.Title = Title;
-            this.Category = Category;
             this.Starting = Starting;
             this.Ending = Ending;
             this.Description = Description;
+            this.Category = Category;
         }
         public Event(string Id, string Title, string Description, string Starting, string Ending, string Category)
         {
@@ -122,9 +123,35 @@ namespace Compact_Agenda
         {
             return TwoDigits(date.Hour) + ":" + TwoDigits(date.Minute);
         }
+
+        private void BackgroundSelonCategory(Graphics DC)
+        {
+            switch (Category)
+            {
+                case 0:
+                    DC.FillRectangle(new SolidBrush(Properties.Settings.Default.colorGeneral), GetBorder());
+                    break;
+                case 1:
+                    DC.FillRectangle(new SolidBrush(Properties.Settings.Default.colorTravail), GetBorder());
+                    break;
+                case 2:
+                    DC.FillRectangle(new SolidBrush(Properties.Settings.Default.colorSante), GetBorder());
+                    break;
+                case 3:
+                    DC.FillRectangle(new SolidBrush(Properties.Settings.Default.colorImportant), GetBorder());
+                    break;
+                case 4:
+                    DC.FillRectangle(new SolidBrush(Properties.Settings.Default.colorSante), GetBorder());
+                    break;
+                case 5:
+                    DC.FillRectangle(new SolidBrush(Properties.Settings.Default.colorAutre), GetBorder());
+                    break;
+            }
+        }
+
         public void Draw(Graphics DC)
         {
-            DC.FillRectangle(new SolidBrush(eventColor), GetBorder());
+            BackgroundSelonCategory(DC);
             DC.DrawRectangle(new Pen(Color.Black, 1), GetBorder());
             string time = TimeToString(Starting) + "-" + TimeToString(Ending);
 
