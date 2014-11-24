@@ -119,39 +119,31 @@ namespace Compact_Agenda
         private void Fill_Days_Header(Graphics DC)
         {
             Point location;
+            Point location2;
             DateTime date = _CurrentWeek;
             string[] dayNames = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.DayNames;//[col].Substring(0, 3).ToUpper();
-            Pen pen = new Pen(Color.LightGray, 1);
+            Pen pen = new Pen(Color.Black, 1);
+            Brush brush = new SolidBrush(Color.White);  
             for (int dayNum = 0; dayNum < 7; dayNum++)
             {
                 location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * dayNum), 0);
-                if (Convert.ToInt32(DateTime.Now.DayOfWeek) == dayNum && DateTime.Now.Day == date.Day) //si le jour de la semaine est pareille que le jour de semaine actuel, on affiche le nouveau paneau indiquant la journée d'aujourdhui
+                location2 = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * (dayNum+1)), 0);
+                String headerText = dayNames[dayNum];
+                String headerDate = date.ToShortDateString();
+                if (Convert.ToInt32(DateTime.Now.DayOfWeek) == dayNum && DateTime.Now.Day == date.Day) //si le jour de la semaine est pareille que le jour de semaine actuel, 
                 {
-                    pen = new Pen(Color.Black, 1);
-                    Brush brush = new SolidBrush(Color.Black);
-                    PN_Today.Visible = true;
-                    PN_Today.Location = location;
-                    PN_Today.Width = PN_DaysHeader.Width / 7 ;
-                    PN_Today.Height = PN_DaysHeader.Height-1;
-                    //--Ecriture dans le nouveau panel d'aujourd'hui
-                    String headerText = dayNames[dayNum];
-                    String headerDate = date.ToShortDateString();
-                    DC.DrawLine(pen, location.X+1, 0, location.X+1, PN_DaysHeader.Height);
-                    DC.DrawString(headerText, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.04), location.Y); //afficher à un pourcentage de la location
-                    DC.DrawString(headerDate, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.04), location.Y + 14);//""
+                    pen = new Pen(Color.Silver, (PN_DaysHeader.Width / 7f) -2);
+                    brush = new SolidBrush(Color.Black);
+                    DC.DrawLine(pen, (location.X + location2.X) / 2, 0, (location.X + location2.X) / 2, PN_DaysHeader.Height-1); //surligne la journée d'aujourd'hui 
                 }
                 else
                 {
                     pen = new Pen(Color.LightGray, 1);
-                    Brush brush = new SolidBrush(Color.White);
-                    String headerText = dayNames[dayNum];
-                    String headerDate = date.ToShortDateString();
-                    DC.DrawLine(pen, location.X, 0, location.X, PN_DaysHeader.Height);
-                    DC.DrawString(headerText, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.04), location.Y);//afficher à un pourcentage de la location
-                    DC.DrawString(headerDate, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.04), location.Y + 14);//""               
+                    brush = new SolidBrush(Color.White);           
                 }
+                DC.DrawString(headerText, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.20), location.Y);//afficher à un pourcentage de la location
+                DC.DrawString(headerDate, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.20), location.Y + 14);//""      
                 date = date.AddDays(1);
-
             }
             pen = new Pen(Color.LightGray, 2);
             DC.DrawLine(pen, 0, PN_DaysHeader.Height+2, PN_DaysHeader.Width+2, PN_DaysHeader.Height);//ligne qui sépare le PN_DaysHeader de reste
@@ -746,18 +738,6 @@ namespace Compact_Agenda
         private void PN_Hours_MouseLeave(object sender, EventArgs e)
         {
             ZS_Zoom.Visible = false;
-        }
-
-        private void PN_Today_Paint(object sender, PaintEventArgs e)
-        {
-            if (_CurrentWeek.Day == DateTime.Now.Day)
-            {
-                PN_Today.Visible = true;
-                Fill_Days_Header(e.Graphics);
-            }
-            else
-                PN_Today.Visible = false;
-                
         }
 
     }
