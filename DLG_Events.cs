@@ -91,7 +91,7 @@ namespace Compact_Agenda
         private void TBX_Title_TextChanged(object sender, EventArgs e)
         {
                 Event.Title = TBX_Title.Text;
-        }
+            }
 
         private void TBX_Description_TextChanged(object sender, EventArgs e)
         {
@@ -190,9 +190,9 @@ namespace Compact_Agenda
 
             if (TBX_Description.Text != "" && TBX_Title.Text != "")
             {
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
-            }
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close();
+        }
             else
                 if (TBX_Description.Text == "" && TBX_Title.Text == "")
                 {
@@ -211,15 +211,22 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
-                if (NUD_FinHeure.Value != 23)
+                if (NUD_DebutHeure.Value > NUD_FinHeure.Value)
                 {
-                    if (NUD_DebutHeure.Value >= NUD_FinHeure.Value)
+                    NUD_FinHeure.Value = NUD_DebutHeure.Value;
+                }                
+                if (NUD_DebutHeure.Value == NUD_FinHeure.Value) //s'ils ont la meme heure..
+                {
+                    if (NUD_DebutMinute.Value > NUD_FinMinute.Value-30)
                     {
-                        NUD_FinHeure.Value = NUD_DebutHeure.Value + 1;
+                        if (NUD_DebutMinute.Value < 30)                        
+                            NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;    
+                        else
+                    {
+                            NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
+                            NUD_FinHeure.Value++;
                     }
                 }
-                else
-                {
                 }
 
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
@@ -235,14 +242,33 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
-                if (NUD_DebutHeure.Value == 22 && NUD_DebutMinute.Value == 60)
+                if (NUD_DebutMinute.Value == -5)
                 {
+                    NUD_DebutHeure.Value--;
                     NUD_DebutMinute.Value = 55;
                 }
                 else if (NUD_DebutMinute.Value == 60)
                 {
                     NUD_DebutMinute.Value = 0;
                     NUD_DebutHeure.Value++;
+                }
+                if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value )
+                {
+                    if (NUD_DebutMinute.Value > 30)
+                    {
+                        NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
+                    }
+                }
+                if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
+                {
+                    if (NUD_DebutHeure.Value == 23 && NUD_DebutMinute.Value > 25)
+                    {
+                        NUD_DebutMinute.Value = 25;
+                    }
+                    if(NUD_DebutMinute.Value > (NUD_FinMinute.Value-30))
+                    {
+                        NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
+                    }
                 }
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
@@ -257,6 +283,23 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
+                if (NUD_FinHeure.Value < NUD_DebutHeure.Value)
+                {
+                    NUD_DebutHeure.Value = NUD_FinHeure.Value;
+                }
+                if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
+                {
+                    if (NUD_DebutMinute.Value > (NUD_FinMinute.Value - 30))
+                    {
+                        if (NUD_FinMinute.Value > 30)
+                            NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;
+                        else
+                        {
+                            NUD_DebutHeure.Value--;
+                            NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
+                        }
+                    }
+                }
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
                                                  DTP_Date.Value.Day,
@@ -270,9 +313,38 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
-                if (NUD_FinHeure.Value == 23 && NUD_FinMinute.Value == 60)
+                if (NUD_FinMinute.Value == -5)
                 {
+                    NUD_FinHeure.Value--;
                     NUD_FinMinute.Value = 55;
+                }
+                else if (NUD_FinMinute.Value == 60)
+                {
+                    if (NUD_FinHeure.Value == 23)
+                        NUD_FinMinute.Value = 55;
+                    else
+                    {
+                        NUD_FinMinute.Value = 0;
+                        NUD_FinHeure.Value++;
+                    }
+                }
+                if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
+                {
+                    if (NUD_FinMinute.Value < 30)
+                    {
+                        NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
+                    }
+                }
+                if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
+                {
+                    if (NUD_FinMinute.Value>30)
+                    {
+                        if (NUD_DebutMinute.Value > (NUD_FinMinute.Value - 30))
+                        {
+                            NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;
+                        }
+                    }
+
                 }
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
@@ -301,8 +373,8 @@ namespace Compact_Agenda
                 Properties.Settings.Default.Save();
                 
             }
-        PB_General.BackColor = Properties.Settings.Default.colorGeneral;
-        }
+                PB_General.BackColor = Properties.Settings.Default.colorGeneral;
+            }
 
         private void PB_Travail_Click(object sender, EventArgs e)
         {
@@ -312,8 +384,8 @@ namespace Compact_Agenda
                 Properties.Settings.Default.colorTravail = dlg.Color;
                 Properties.Settings.Default.Save();
             }
-            PB_Travail.BackColor = Properties.Settings.Default.colorTravail;
-        }
+                PB_Travail.BackColor = Properties.Settings.Default.colorTravail;
+            }
 
         private void PB_Sante_Click(object sender, EventArgs e)
         {
@@ -323,8 +395,8 @@ namespace Compact_Agenda
                 Properties.Settings.Default.colorSante = dlg.Color;
                 Properties.Settings.Default.Save();
             }
-            PB_Sante.BackColor = Properties.Settings.Default.colorSante;
-        }
+                PB_Sante.BackColor = Properties.Settings.Default.colorSante;
+            }
 
         private void PB_Important_Click(object sender, EventArgs e)
         {
@@ -335,8 +407,8 @@ namespace Compact_Agenda
                 Properties.Settings.Default.Save();
                 
             }
-            PB_Important.BackColor = Properties.Settings.Default.colorImportant;
-        }
+                PB_Important.BackColor = Properties.Settings.Default.colorImportant;
+            }
 
         private void PB_Loisir_Click(object sender, EventArgs e)
         {
@@ -347,8 +419,8 @@ namespace Compact_Agenda
                 Properties.Settings.Default.Save();
                 
             }
-            PB_Loisir.BackColor = Properties.Settings.Default.colorLoisir;
-        }
+                PB_Loisir.BackColor = Properties.Settings.Default.colorLoisir;
+            }
 
         private void PB_Autre_Click(object sender, EventArgs e)
         {
@@ -359,8 +431,8 @@ namespace Compact_Agenda
                 Properties.Settings.Default.Save();
                 
             }
-            PB_Autre.BackColor = Properties.Settings.Default.colorAutre;
-        }
+                PB_Autre.BackColor = Properties.Settings.Default.colorAutre;
+            }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
