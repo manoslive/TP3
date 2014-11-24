@@ -151,9 +151,9 @@
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(213, 12);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(105, 192);
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
@@ -163,7 +163,7 @@
             // 
             this.radioButton6.AutoSize = true;
             this.radioButton6.Location = new System.Drawing.Point(7, 165);
-            this.radioButton6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton6.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(50, 17);
             this.radioButton6.TabIndex = 0;
@@ -175,7 +175,7 @@
             // 
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(7, 137);
-            this.radioButton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton5.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(49, 17);
             this.radioButton5.TabIndex = 0;
@@ -187,7 +187,7 @@
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(7, 109);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(69, 17);
             this.radioButton4.TabIndex = 0;
@@ -199,7 +199,7 @@
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(7, 81);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(53, 17);
             this.radioButton3.TabIndex = 0;
@@ -211,7 +211,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(7, 53);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(57, 17);
             this.radioButton2.TabIndex = 0;
@@ -223,7 +223,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(7, 25);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(62, 17);
             this.radioButton1.TabIndex = 0;
@@ -236,7 +236,7 @@
             // 
             this.PB_General.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PB_General.Location = new System.Drawing.Point(331, 37);
-            this.PB_General.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PB_General.Margin = new System.Windows.Forms.Padding(2);
             this.PB_General.Name = "PB_General";
             this.PB_General.Size = new System.Drawing.Size(40, 19);
             this.PB_General.TabIndex = 48;
@@ -247,7 +247,7 @@
             // 
             this.PB_Travail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PB_Travail.Location = new System.Drawing.Point(331, 65);
-            this.PB_Travail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PB_Travail.Margin = new System.Windows.Forms.Padding(2);
             this.PB_Travail.Name = "PB_Travail";
             this.PB_Travail.Size = new System.Drawing.Size(40, 19);
             this.PB_Travail.TabIndex = 48;
@@ -258,7 +258,7 @@
             // 
             this.PB_Sante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PB_Sante.Location = new System.Drawing.Point(331, 93);
-            this.PB_Sante.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PB_Sante.Margin = new System.Windows.Forms.Padding(2);
             this.PB_Sante.Name = "PB_Sante";
             this.PB_Sante.Size = new System.Drawing.Size(40, 19);
             this.PB_Sante.TabIndex = 48;
@@ -269,7 +269,7 @@
             // 
             this.PB_Important.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PB_Important.Location = new System.Drawing.Point(331, 121);
-            this.PB_Important.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PB_Important.Margin = new System.Windows.Forms.Padding(2);
             this.PB_Important.Name = "PB_Important";
             this.PB_Important.Size = new System.Drawing.Size(40, 19);
             this.PB_Important.TabIndex = 48;
@@ -280,7 +280,7 @@
             // 
             this.PB_Loisir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PB_Loisir.Location = new System.Drawing.Point(331, 149);
-            this.PB_Loisir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PB_Loisir.Margin = new System.Windows.Forms.Padding(2);
             this.PB_Loisir.Name = "PB_Loisir";
             this.PB_Loisir.Size = new System.Drawing.Size(40, 19);
             this.PB_Loisir.TabIndex = 48;
@@ -291,7 +291,7 @@
             // 
             this.PB_Autre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PB_Autre.Location = new System.Drawing.Point(331, 177);
-            this.PB_Autre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PB_Autre.Margin = new System.Windows.Forms.Padding(2);
             this.PB_Autre.Name = "PB_Autre";
             this.PB_Autre.Size = new System.Drawing.Size(40, 19);
             this.PB_Autre.TabIndex = 48;
@@ -329,7 +329,7 @@
             // NUD_DebutHeure
             // 
             this.NUD_DebutHeure.Location = new System.Drawing.Point(69, 242);
-            this.NUD_DebutHeure.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUD_DebutHeure.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_DebutHeure.Maximum = new decimal(new int[] {
             23,
             0,
@@ -348,7 +348,17 @@
             0,
             0});
             this.NUD_DebutMinute.Location = new System.Drawing.Point(133, 242);
-            this.NUD_DebutMinute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUD_DebutMinute.Margin = new System.Windows.Forms.Padding(2);
+            this.NUD_DebutMinute.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.NUD_DebutMinute.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            -2147483648});
             this.NUD_DebutMinute.Name = "NUD_DebutMinute";
             this.NUD_DebutMinute.Size = new System.Drawing.Size(39, 20);
             this.NUD_DebutMinute.TabIndex = 50;
@@ -357,7 +367,7 @@
             // NUD_FinHeure
             // 
             this.NUD_FinHeure.Location = new System.Drawing.Point(70, 268);
-            this.NUD_FinHeure.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUD_FinHeure.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_FinHeure.Maximum = new decimal(new int[] {
             23,
             0,
@@ -376,7 +386,12 @@
             0,
             0});
             this.NUD_FinMinute.Location = new System.Drawing.Point(133, 268);
-            this.NUD_FinMinute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUD_FinMinute.Margin = new System.Windows.Forms.Padding(2);
+            this.NUD_FinMinute.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            -2147483648});
             this.NUD_FinMinute.Name = "NUD_FinMinute";
             this.NUD_FinMinute.Size = new System.Drawing.Size(39, 20);
             this.NUD_FinMinute.TabIndex = 50;

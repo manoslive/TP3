@@ -171,16 +171,22 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
-                if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
-                {
-                    if (NUD_DebutMinute.Value < 30)
-                        NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
-                    else
-                        NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
-                }
                 if (NUD_DebutHeure.Value > NUD_FinHeure.Value)
                 {
                     NUD_FinHeure.Value = NUD_DebutHeure.Value;
+                }                
+                if (NUD_DebutHeure.Value == NUD_FinHeure.Value) //s'ils ont la meme heure..
+                {
+                    if (NUD_DebutMinute.Value > NUD_FinMinute.Value-30)
+                    {
+                        if (NUD_DebutMinute.Value < 30)                        
+                            NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;    
+                        else
+                        {
+                            NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
+                            NUD_FinHeure.Value++;
+                        }                     
+                    }
                 }
 
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
@@ -196,6 +202,10 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
+                if (NUD_DebutMinute.Value == -5)
+                {
+                    NUD_DebutMinute.Value = 55;
+                }
                 if (NUD_DebutHeure.Value != NUD_FinHeure.Value)
                 {
                     if (NUD_DebutMinute.Value == 60)
@@ -203,9 +213,20 @@ namespace Compact_Agenda
                         NUD_DebutMinute.Value = 0;
                         NUD_DebutHeure.Value++;
                     }
+                    if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value )
+                    {
+                        if (NUD_DebutMinute.Value < 30)
+                            NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
+                        else
+                            NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
+                    }
                 }
                 else //si l'heure de début et de fin sont pareilles
                 {
+                    if (NUD_DebutHeure.Value == 23 && NUD_DebutMinute.Value > 25)
+                    {
+                        NUD_DebutMinute.Value = 25;
+                    }
                     if(NUD_DebutMinute.Value >= (NUD_FinMinute.Value-30))
                     {
                         NUD_FinMinute.Value +=5;
@@ -224,9 +245,22 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
-                if (NUD_FinHeure.Value <= NUD_DebutHeure.Value)
+                if (NUD_FinHeure.Value < NUD_DebutHeure.Value)
                 {
                     NUD_DebutHeure.Value = NUD_FinHeure.Value;
+                }
+                if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
+                {
+                    if (NUD_FinMinute.Value > 30)
+                    {
+                        if ((NUD_FinMinute.Value - 30) < NUD_DebutMinute.Value)
+                            NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;
+                    }
+                    else
+                    {
+                        NUD_DebutHeure.Value--;
+                        NUD_DebutMinute.Value = NUD_FinMinute.Value+ 30;
+                    }
                 }
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
@@ -238,9 +272,13 @@ namespace Compact_Agenda
         }
 
         private void NUD_FinMinute_ValueChanged(object sender, EventArgs e)
-        {
+        {           
             if (!blockUpdate)
             {
+                if (NUD_FinMinute.Value == -5)
+                {
+                    NUD_FinMinute.Value = 55;
+                }
                 if (NUD_FinHeure.Value == 23)
                 {
                     if(NUD_FinMinute.Value == 60)
@@ -252,9 +290,17 @@ namespace Compact_Agenda
                 {
                     if (NUD_FinMinute.Value == 60)
                     {
-                        NUD_FinHeure.Value += 1;
                         NUD_FinMinute.Value = 0;
+                        NUD_FinHeure.Value ++;
                     }
+                    if((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
+                    {
+                        if(NUD_FinMinute.Value>30)
+                            NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;         
+                        else
+                            NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;  
+                    }
+ 
                 }
 
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
