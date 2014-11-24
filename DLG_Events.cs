@@ -251,15 +251,15 @@ namespace Compact_Agenda
                 }
                 if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
                 {
-                    if (NUD_FinMinute.Value > 30)
+                    if (NUD_DebutMinute.Value > (NUD_FinMinute.Value - 30))
                     {
-                        if ((NUD_FinMinute.Value - 30) < NUD_DebutMinute.Value)
+                        if (NUD_FinMinute.Value > 30)
                             NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;
-                    }
-                    else
-                    {
-                        NUD_DebutHeure.Value--;
-                        NUD_DebutMinute.Value = NUD_FinMinute.Value+ 30;
+                        else
+                        {
+                            NUD_DebutHeure.Value--;
+                            NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
+                        }
                     }
                 }
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
