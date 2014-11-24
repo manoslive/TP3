@@ -59,6 +59,9 @@ namespace Compact_Agenda
             GotoCurrentWeek();
             this.Size = Properties.Settings.Default.tailleWeekView;
             this.Location = Properties.Settings.Default.positionWeekView;
+            this.PN_Scroll.BackColor = Properties.Settings.Default.colorFondContent;
+            this.PN_Hours.BackColor = Properties.Settings.Default.colorFondContent;
+            this.PN_Content.BackColor = Properties.Settings.Default.colorFondContent;
         }
 
         private void PN_Scroll_MouseEnter(Object sender, EventArgs e)
@@ -590,9 +593,6 @@ namespace Compact_Agenda
                         GotoCurrentWeek();
                     break;
             }
-
-
-
             bool result = base.ProcessCmdKey(ref msg, keyData);
             PN_Scroll.Focus();
             return result;
@@ -633,22 +633,27 @@ namespace Compact_Agenda
 
         private void CMI_Reporter_Click(object sender, EventArgs e)
         {
-            evenement.TargetEvent.Starting = new DateTime(DateTime.Now.Year,
-                                                 DateTime.Now.Month,
-                                                 DateTime.Now.Day + 7,
-                                                 DateTime.Now.Hour,
-                                                 DateTime.Now.Minute,
-                                                 0);
-            evenement.TargetEvent.Ending = new DateTime(DateTime.Now.Year,
-                                     DateTime.Now.Month,
-                                     DateTime.Now.Day + 7,
-                                     DateTime.Now.Hour,
-                                     DateTime.Now.Minute,
-                                     0);
+            evenement.TargetEvent.Starting = new DateTime();
+                                                            //evenement.TargetEvent.Starting.Year,
+                                                            //evenement.TargetEvent.Starting.Month,
+                                                            //evenement.TargetEvent.Starting.Day + 7,
+                                                            //evenement.TargetEvent.Starting.Hour,
+                                                            //evenement.TargetEvent.Starting.Minute,
+                                                            //0);
+            evenement.TargetEvent.Starting = evenement.TargetEvent.Starting.AddDays(7);
+
+            evenement.TargetEvent.Ending = new DateTime();
+                                                            //evenement.TargetEvent.Ending.Year,
+                                                            //evenement.TargetEvent.Ending.Month,
+                                                            //evenement.TargetEvent.Ending.Day + 7,
+                                                            //evenement.TargetEvent.Ending.Hour,
+                                                            //evenement.TargetEvent.Ending.Minute,
+                                                            //0);
+            evenement.TargetEvent.Ending = evenement.TargetEvent.Ending.AddDays(7);
+
             GetWeekEvents();
             PN_Content.Refresh();
         }
-
         private void CMI_Dupliquer_Click(object sender, EventArgs e)
         {
             Event newEvent = new Event(evenement.TargetEvent.Id, evenement.TargetEvent.Title, evenement.TargetEvent.Description, evenement.TargetEvent.Starting.AddDays(1), evenement.TargetEvent.Ending.AddDays(1), evenement.TargetEvent.Category);
@@ -668,6 +673,8 @@ namespace Compact_Agenda
         private void policeDesÉvênementsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog dlg = new FontDialog();
+            dlg.MaxSize = 12;
+            dlg.Font = Properties.Settings.Default.fontEvenement;
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.colorFontEvenement = dlg.Color;
@@ -688,6 +695,8 @@ namespace Compact_Agenda
         private void policeTitreÉvênementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog dlg = new FontDialog();
+            dlg.MaxSize = 12;
+            dlg.Font = Properties.Settings.Default.fontEvenementBold;
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.fontEvenementBold = dlg.Font;
@@ -704,7 +713,11 @@ namespace Compact_Agenda
                 Properties.Settings.Default.colorFondContent = dlg.Color;
                 Properties.Settings.Default.Save();
             }
+            PN_Content.BackColor = Properties.Settings.Default.colorFondContent;
+            PN_Scroll.BackColor = Properties.Settings.Default.colorFondContent;
+            PN_Hours.BackColor = Properties.Settings.Default.colorFondContent;
             PN_Content.Refresh();
+
         }
 
         private void couleurDeLaPoliceDesÉvênementsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -749,6 +762,7 @@ namespace Compact_Agenda
         {
             Properties.Settings.Default.positionWeekView = this.Location;
             Properties.Settings.Default.tailleWeekView = this.Size;
+            Properties.Settings.Default.colorFondContent = this.PN_Content.BackColor;
             Properties.Settings.Default.Save();
         }
 
