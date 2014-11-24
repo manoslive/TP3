@@ -30,6 +30,8 @@ namespace Compact_Agenda
             PB_Important.BackColor = Properties.Settings.Default.colorImportant;
             PB_Loisir.BackColor = Properties.Settings.Default.colorLoisir;
             PB_Autre.BackColor = Properties.Settings.Default.colorAutre;
+            TBX_Description.ForeColor = Properties.Settings.Default.colorFontEvenement;
+            TBX_Title.ForeColor = Properties.Settings.Default.colorFontEvenement;
             delete = false;
             EventToDLG();
             if (deleteCM)
@@ -66,6 +68,24 @@ namespace Compact_Agenda
             }
         }
 
+        private int RBToInt()
+        {
+            if (RB_General.Checked)
+                return 0;
+            else if (RB_Travail.Checked)
+                return 1;
+            else if (RB_Sante.Checked)
+                return 2;
+            else if (RB_Important.Checked)
+                return 3;
+            else if (RB_Loisir.Checked)
+                return 4;
+            else if (RB_Autre.Checked)
+                return 5;
+            else
+                return 0;
+        }
+
         private void EventToDLG()
         {
             if (Event != null)
@@ -90,12 +110,11 @@ namespace Compact_Agenda
 
         private void TBX_Title_TextChanged(object sender, EventArgs e)
         {
-                Event.Title = TBX_Title.Text;
-            }
+
+        }
 
         private void TBX_Description_TextChanged(object sender, EventArgs e)
         {
-            Event.Description = TBX_Description.Text;
         }
 
         private void DTP_Date_ValueChanged(object sender, EventArgs e)
@@ -168,7 +187,7 @@ namespace Compact_Agenda
 
         private void flashButton1_Click(object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Close();
         }
 
         private void BTN_Ok_Click(object sender, EventArgs e)
@@ -177,6 +196,11 @@ namespace Compact_Agenda
         }
 
         private void BTN_Cancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TestSiChampsVides()
         {
 
         }
@@ -190,9 +214,12 @@ namespace Compact_Agenda
 
             if (TBX_Description.Text != "" && TBX_Title.Text != "")
             {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.Close();
-        }
+                Event.Description = TBX_Description.Text;
+                Event.Title = TBX_Title.Text;
+                Event.Category = RBToInt();
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                this.Close();
+            }
             else
                 if (TBX_Description.Text == "" && TBX_Title.Text == "")
                 {
@@ -204,7 +231,6 @@ namespace Compact_Agenda
 
                 else
                     LB_Description.ForeColor = Color.Red;
-
         }
 
         private void NUD_DebutHeure_ValueChanged(object sender, EventArgs e)
@@ -214,19 +240,19 @@ namespace Compact_Agenda
                 if (NUD_DebutHeure.Value > NUD_FinHeure.Value)
                 {
                     NUD_FinHeure.Value = NUD_DebutHeure.Value;
-                }                
+                }
                 if (NUD_DebutHeure.Value == NUD_FinHeure.Value) //s'ils ont la meme heure..
                 {
-                    if (NUD_DebutMinute.Value > NUD_FinMinute.Value-30)
+                    if (NUD_DebutMinute.Value > NUD_FinMinute.Value - 30)
                     {
-                        if (NUD_DebutMinute.Value < 30)                        
-                            NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;    
+                        if (NUD_DebutMinute.Value < 30)
+                            NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
                         else
-                    {
+                        {
                             NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
                             NUD_FinHeure.Value++;
+                        }
                     }
-                }
                 }
 
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
@@ -252,7 +278,7 @@ namespace Compact_Agenda
                     NUD_DebutMinute.Value = 0;
                     NUD_DebutHeure.Value++;
                 }
-                if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value )
+                if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
                 {
                     if (NUD_DebutMinute.Value > 30)
                     {
@@ -265,7 +291,7 @@ namespace Compact_Agenda
                     {
                         NUD_DebutMinute.Value = 25;
                     }
-                    if(NUD_DebutMinute.Value > (NUD_FinMinute.Value-30))
+                    if (NUD_DebutMinute.Value > (NUD_FinMinute.Value - 30))
                     {
                         NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
                     }
@@ -337,7 +363,7 @@ namespace Compact_Agenda
                 }
                 if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
                 {
-                    if (NUD_FinMinute.Value>30)
+                    if (NUD_FinMinute.Value > 30)
                     {
                         if (NUD_DebutMinute.Value > (NUD_FinMinute.Value - 30))
                         {
@@ -371,10 +397,10 @@ namespace Compact_Agenda
             {
                 Properties.Settings.Default.colorGeneral = dlg.Color;
                 Properties.Settings.Default.Save();
-                
+
             }
-                PB_General.BackColor = Properties.Settings.Default.colorGeneral;
-            }
+            PB_General.BackColor = Properties.Settings.Default.colorGeneral;
+        }
 
         private void PB_Travail_Click(object sender, EventArgs e)
         {
@@ -384,8 +410,8 @@ namespace Compact_Agenda
                 Properties.Settings.Default.colorTravail = dlg.Color;
                 Properties.Settings.Default.Save();
             }
-                PB_Travail.BackColor = Properties.Settings.Default.colorTravail;
-            }
+            PB_Travail.BackColor = Properties.Settings.Default.colorTravail;
+        }
 
         private void PB_Sante_Click(object sender, EventArgs e)
         {
@@ -395,8 +421,8 @@ namespace Compact_Agenda
                 Properties.Settings.Default.colorSante = dlg.Color;
                 Properties.Settings.Default.Save();
             }
-                PB_Sante.BackColor = Properties.Settings.Default.colorSante;
-            }
+            PB_Sante.BackColor = Properties.Settings.Default.colorSante;
+        }
 
         private void PB_Important_Click(object sender, EventArgs e)
         {
@@ -405,10 +431,10 @@ namespace Compact_Agenda
             {
                 Properties.Settings.Default.colorImportant = dlg.Color;
                 Properties.Settings.Default.Save();
-                
+
             }
-                PB_Important.BackColor = Properties.Settings.Default.colorImportant;
-            }
+            PB_Important.BackColor = Properties.Settings.Default.colorImportant;
+        }
 
         private void PB_Loisir_Click(object sender, EventArgs e)
         {
@@ -417,10 +443,10 @@ namespace Compact_Agenda
             {
                 Properties.Settings.Default.colorLoisir = dlg.Color;
                 Properties.Settings.Default.Save();
-                
+
             }
-                PB_Loisir.BackColor = Properties.Settings.Default.colorLoisir;
-            }
+            PB_Loisir.BackColor = Properties.Settings.Default.colorLoisir;
+        }
 
         private void PB_Autre_Click(object sender, EventArgs e)
         {
@@ -429,10 +455,10 @@ namespace Compact_Agenda
             {
                 Properties.Settings.Default.colorAutre = dlg.Color;
                 Properties.Settings.Default.Save();
-                
+
             }
-                PB_Autre.BackColor = Properties.Settings.Default.colorAutre;
-            }
+            PB_Autre.BackColor = Properties.Settings.Default.colorAutre;
+        }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
