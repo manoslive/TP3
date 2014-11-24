@@ -268,10 +268,10 @@ namespace Compact_Agenda
         {
             if (!blockUpdate)
             {
-                if (NUD_DebutMinute.Value == -5)
-                {
-                    NUD_DebutHeure.Value--;
+                if (NUD_DebutMinute.Value <= -5)
+                {                  
                     NUD_DebutMinute.Value = 55;
+                    NUD_DebutHeure.Value--;
                 }
                 else if (NUD_DebutMinute.Value == 60)
                 {
@@ -280,7 +280,7 @@ namespace Compact_Agenda
                 }
                 if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
                 {
-                    if (NUD_DebutMinute.Value > 30)
+                    if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value < NUD_DebutMinute.Value-30)
                     {
                         NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
                     }
@@ -341,8 +341,8 @@ namespace Compact_Agenda
             {
                 if (NUD_FinMinute.Value == -5)
                 {
-                    NUD_FinHeure.Value--;
                     NUD_FinMinute.Value = 55;
+                    NUD_FinHeure.Value--;
                 }
                 else if (NUD_FinMinute.Value == 60)
                 {
@@ -369,6 +369,10 @@ namespace Compact_Agenda
                         {
                             NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;
                         }
+                    }
+                    else
+                    {
+                        NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
                     }
 
                 }
