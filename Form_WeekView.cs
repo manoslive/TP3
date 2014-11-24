@@ -99,14 +99,14 @@ namespace Compact_Agenda
             {
                 DC.DrawLine(pen1, 0, Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
                 DC.DrawLine(pen2, 0, Event.HourToPixel(hour + 1, 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 30, PN_Hours.Height));
-                if(hour == DateTime.Now.Minute)
+                if(hour == DateTime.Now.Hour)
                 {
                     for (int min = 0; min < 60; min++)
                     {
                         if (min == DateTime.Now.Minute)
                         {
                             Point locationFleche = new Point(0, Event.HourToPixel(hour, min, PN_Hours.Height));
-                            DC.DrawLine(penActuel, locationFleche.X , locationFleche.Y - 11, (locationFleche.X + 17) + PN_Content.Width, locationFleche.Y - 11);
+                            DC.DrawLine(penActuel, locationFleche.X  , locationFleche.Y , (locationFleche.X + 17) + PN_Content.Width, locationFleche.Y);
                         }
                     }
                 }
