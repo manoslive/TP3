@@ -329,7 +329,7 @@
             // 
             // NUD_DebutHeure
             // 
-            this.NUD_DebutHeure.Location = new System.Drawing.Point(69, 242);
+            this.NUD_DebutHeure.Location = new System.Drawing.Point(105, 373);
             this.NUD_DebutHeure.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_DebutHeure.Maximum = new decimal(new int[] {
             23,
@@ -348,7 +348,7 @@
             0,
             0,
             0});
-            this.NUD_DebutMinute.Location = new System.Drawing.Point(133, 242);
+            this.NUD_DebutMinute.Location = new System.Drawing.Point(199, 373);
             this.NUD_DebutMinute.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_DebutMinute.Maximum = new decimal(new int[] {
             60,
@@ -367,7 +367,7 @@
             // 
             // NUD_FinHeure
             // 
-            this.NUD_FinHeure.Location = new System.Drawing.Point(70, 268);
+            this.NUD_FinHeure.Location = new System.Drawing.Point(105, 413);
             this.NUD_FinHeure.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_FinHeure.Maximum = new decimal(new int[] {
             23,
@@ -386,7 +386,7 @@
             0,
             0,
             0});
-            this.NUD_FinMinute.Location = new System.Drawing.Point(133, 268);
+            this.NUD_FinMinute.Location = new System.Drawing.Point(199, 413);
             this.NUD_FinMinute.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_FinMinute.Minimum = new decimal(new int[] {
             5,
