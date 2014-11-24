@@ -141,8 +141,8 @@ namespace Compact_Agenda
                     pen = new Pen(Color.LightGray, 1);
                     brush = new SolidBrush(Color.White);           
                 }
-                DC.DrawString(headerText, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.20), location.Y);//afficher à un pourcentage de la location
-                DC.DrawString(headerDate, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.20), location.Y + 14);//""      
+                DC.DrawString(headerText, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.05), location.Y);//afficher à un pourcentage de la location
+                DC.DrawString(headerDate, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.05), location.Y + 14);//""      
                 date = date.AddDays(1);
             }
             pen = new Pen(Color.LightGray, 2);
