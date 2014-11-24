@@ -34,6 +34,7 @@
             this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
+            this.PB_Fleche = new System.Windows.Forms.PictureBox();
             this.FBTN_DecrementWeek = new FlashButton.FlashButton();
             this.FBTN_IncrementWeek = new FlashButton.FlashButton();
             this.PN_DaysHeader = new Compact_Agenda.DoubleBufferPanel();
@@ -59,6 +60,8 @@
             this.couleurDeLaPoliceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.PN_Frame.SuspendLayout();
             this.PN_Scroll.SuspendLayout();
+            this.PN_Hours.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Fleche)).BeginInit();
             this.CM_Event.SuspendLayout();
             this.CM_EnteteJour.SuspendLayout();
             this.CM_SemaineCourante.SuspendLayout();
@@ -115,6 +118,7 @@
             // 
             // PN_Hours
             // 
+            this.PN_Hours.Controls.Add(this.PB_Fleche);
             this.PN_Hours.Location = new System.Drawing.Point(0, 0);
             this.PN_Hours.Name = "PN_Hours";
             this.PN_Hours.Size = new System.Drawing.Size(36, 518);
@@ -123,6 +127,18 @@
             this.PN_Hours.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_Hours_MouseClick);
             this.PN_Hours.MouseEnter += new System.EventHandler(this.PN_Hours_MouseEnter);
             this.PN_Hours.MouseLeave += new System.EventHandler(this.PN_Hours_MouseLeave);
+            // 
+            // PB_Fleche
+            // 
+            this.PB_Fleche.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Fleche.BackgroundImage = global::Compact_Agenda.Properties.Resources.Arrow_Time1;
+            this.PB_Fleche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PB_Fleche.Location = new System.Drawing.Point(3, 127);
+            this.PB_Fleche.Name = "PB_Fleche";
+            this.PB_Fleche.Size = new System.Drawing.Size(29, 25);
+            this.PB_Fleche.TabIndex = 0;
+            this.PB_Fleche.TabStop = false;
+            this.PB_Fleche.Visible = false;
             // 
             // FBTN_DecrementWeek
             // 
@@ -328,6 +344,8 @@
             this.Load += new System.EventHandler(this.Form_WeekView_Load);
             this.PN_Frame.ResumeLayout(false);
             this.PN_Scroll.ResumeLayout(false);
+            this.PN_Hours.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Fleche)).EndInit();
             this.CM_Event.ResumeLayout(false);
             this.CM_EnteteJour.ResumeLayout(false);
             this.CM_SemaineCourante.ResumeLayout(false);
@@ -365,6 +383,7 @@
         private System.Windows.Forms.ToolStripMenuItem couleurDeLaPoliceToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem policeTitreÉvênementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem couleurLignesSecondaires;
+        private System.Windows.Forms.PictureBox PB_Fleche;
 
     }
 }

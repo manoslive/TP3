@@ -91,6 +91,7 @@ namespace Compact_Agenda
         private void Fill_Agenda(Graphics DC)
         {
             Brush brush = new SolidBrush(Color.Black);
+            Pen penActuel = new Pen(Color.Red, 1);
             Pen pen1 = new Pen(Properties.Settings.Default.colorLignePrincipale, 1);
             Pen pen2 = new Pen(Properties.Settings.Default.colorLigneSecondaire, 1);
             pen2.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
@@ -98,6 +99,18 @@ namespace Compact_Agenda
             {
                 DC.DrawLine(pen1, 0, Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
                 DC.DrawLine(pen2, 0, Event.HourToPixel(hour + 1, 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 30, PN_Hours.Height));
+                if(hour == DateTime.Now.Minute)
+                {
+                    for (int min = 0; min < 60; min++)
+                    {
+                        if (min == DateTime.Now.Minute)
+                        {
+                            Point locationFleche = new Point(0, Event.HourToPixel(hour, min, PN_Hours.Height));
+                            DC.DrawLine(penActuel, locationFleche.X , locationFleche.Y - 11, (locationFleche.X + 17) + PN_Content.Width, locationFleche.Y - 11);
+                        }
+                    }
+                }
+
             }
             Point location;
             for (int dayNum = 0; dayNum < 7; dayNum++)
@@ -161,6 +174,18 @@ namespace Compact_Agenda
                 String headerText = (hour < 10 ? "0" : "") + hour.ToString() + ":00";
                 DC.DrawString(headerText, PN_DaysHeader.Font, brush, location);
                 DC.DrawLine(pen, 0, Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Hours.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
+                if(hour == DateTime.Now.Hour)
+                {
+                    for (int min = 0; min < 60; min++ )
+                    {
+                        if(min == DateTime.Now.Minute)
+                        {
+                            Point locationFleche = new Point(0, Event.HourToPixel(hour, min, PN_Hours.Height));
+                            PB_Fleche.Visible = true;
+                            PB_Fleche.Location = new Point(locationFleche.X + 17, locationFleche.Y - 11);
+                        }
+                    }
+                }
             }
         }
 
