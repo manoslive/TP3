@@ -164,9 +164,8 @@ namespace Compact_Agenda
                 DC.DrawString(headerDate, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.05), location.Y + 14);//""      
                 date = date.AddDays(1);
             }
-            location = new Point(PN_DaysHeader.Width, 0);
-            DC.DrawLine(penLignes, location.X, 0, location.X, PN_DaysHeader.Height);
-            DC.DrawLine(penLignes, 0, PN_DaysHeader.Height , PN_DaysHeader.Width, PN_DaysHeader.Height);//ligne qui sépare le PN_DaysHeader de reste
+            DC.DrawLine(penLignes, 0, PN_DaysHeader.Height-1, PN_DaysHeader.Width, PN_DaysHeader.Height-1);
+            DC.DrawLine(penLignes, PN_DaysHeader.Width-2, 0, PN_DaysHeader.Width-2, PN_DaysHeader.Height);//ligne qui sépare le PN_DaysHeader de reste
             location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * 7), 0);
             DC.DrawLine(penLignes, location.X - 1, 0, location.X - 1, PN_DaysHeader.Height); //ligne completement à la droite
         }
