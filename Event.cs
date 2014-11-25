@@ -160,14 +160,14 @@ namespace Compact_Agenda
             Rectangle border = GetBorder();
             fontSize += 6;
 
-            System.Windows.Forms.TextRenderer.DrawText(DC, time, Properties.Settings.Default.fontEvenement, border, Color.Black, flags);
+            System.Windows.Forms.TextRenderer.DrawText(DC, time, Properties.Settings.Default.fontEvenement, border, Properties.Settings.Default.colorFontEvenement, flags);
             border = new Rectangle(border.Location.X, border.Location.Y + fontSize, border.Width, border.Height - fontSize);
 
-            System.Windows.Forms.TextRenderer.DrawText(DC, Title, Properties.Settings.Default.fontEvenementBold, border, Color.Black, flags);
+            System.Windows.Forms.TextRenderer.DrawText(DC, Title, Properties.Settings.Default.fontEvenementBold, border, Properties.Settings.Default.colorFontEvenement, flags);
             border = new Rectangle(border.Location.X, border.Location.Y + fontSize, border.Width, border.Height - fontSize);
 
             flags = System.Windows.Forms.TextFormatFlags.WordBreak;
-            System.Windows.Forms.TextRenderer.DrawText(DC, Description, Properties.Settings.Default.fontEvenement, border, Color.Black, flags);
+            System.Windows.Forms.TextRenderer.DrawText(DC, Description, Properties.Settings.Default.fontEvenement, border, Properties.Settings.Default.colorFontEvenement, flags);
         }
     }
 }
