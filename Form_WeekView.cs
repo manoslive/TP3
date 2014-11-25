@@ -895,7 +895,7 @@ namespace Compact_Agenda
             valeurZoom = ZS_ZoomMaster.Value;
         }
 
-        private void aujourdhuiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void afficherSemainCouranteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _CurrentWeek = DateTime.Now;
             GetWeekEvents();
