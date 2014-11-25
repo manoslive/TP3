@@ -31,12 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_WeekView));
             this.PN_Frame = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
 
             this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
             this.ZS_ZoomMaster = new ZoomSliderProject.ZoomSlider();
             this.PB_Fleche = new System.Windows.Forms.PictureBox();
+=======
+>>>>>>> parent of 5c18abd... des lignes des lignes des lignes
             this.FBTN_DecrementWeek = new FlashButton.FlashButton();
             this.FBTN_IncrementWeek = new FlashButton.FlashButton();
             this.CM_Event = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -91,6 +94,7 @@
             this.PN_Frame.TabIndex = 4;
             this.PN_Frame.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Frame_Paint);
             // 
+<<<<<<< HEAD
             // PN_Scroll
             // 
             this.PN_Scroll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -164,6 +168,8 @@
             this.PB_Fleche.TabStop = false;
             this.PB_Fleche.Visible = false;
             // 
+=======
+>>>>>>> parent of 5c18abd... des lignes des lignes des lignes
             // FBTN_DecrementWeek
             // 
             this.FBTN_DecrementWeek.BackgroundImage = global::Compact_Agenda.Properties.Resources.ICON_Left_Neutral;
