@@ -102,7 +102,7 @@ namespace Compact_Agenda
             for (int hour = 0; hour < 24; hour++)
             {
                 DC.DrawLine(pen1, 0, Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
-                DC.DrawLine(pen2, 0, Event.HourToPixel(hour , 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour, 30, PN_Hours.Height));
+                DC.DrawLine(pen2, 0, Event.HourToPixel(hour + 1, 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 30, PN_Hours.Height));
                 if (hour == DateTime.Now.Hour)
                 {
                     for (int min = 0; min < 60; min++)
