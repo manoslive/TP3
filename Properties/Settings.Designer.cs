@@ -60,7 +60,7 @@ namespace Compact_Agenda.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
         public global::System.Drawing.Color colorFontEvenement {
             get {
                 return ((global::System.Drawing.Color)(this["colorFontEvenement"]));

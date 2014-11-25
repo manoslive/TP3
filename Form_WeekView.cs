@@ -651,16 +651,21 @@ namespace Compact_Agenda
             //evenement.TargetEvent.Ending.Minute,
             //0);
             evenement.TargetEvent.Ending = evenement.TargetEvent.Ending.AddDays(7);
-
             GetWeekEvents();
             PN_Content.Refresh();
         }
         private void CMI_Dupliquer_Click(object sender, EventArgs e)
         {
-            Event newEvent = new Event(evenement.TargetEvent.Id, evenement.TargetEvent.Title, evenement.TargetEvent.Description, evenement.TargetEvent.Starting.AddDays(1), evenement.TargetEvent.Ending.AddDays(1), evenement.TargetEvent.Category);
-            evenement.Add(newEvent);
-            GetWeekEvents();
-            PN_Content.Refresh();
+            Event duplicata = new Event();
+            duplicata = evenement.TargetEvent.Klone();
+            duplicata.Starting.AddHours(1);
+            duplicata.Ending.AddHours(1);
+
+
+            //Event newEvent = new Event(evenement.TargetEvent.Id, evenement.TargetEvent.Title, evenement.TargetEvent.Description, evenement.TargetEvent.Starting.AddDays(1), evenement.TargetEvent.Ending.AddDays(1), evenement.TargetEvent.Category);
+            //evenement.Add(newEvent);
+            //GetWeekEvents();
+            //PN_Content.Refresh();
         }
 
         private void PN_DaysHeader_MouseClick(object sender, MouseEventArgs e)
@@ -774,10 +779,11 @@ namespace Compact_Agenda
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
             ZS_Zoom.Visible = true;
-            ZS_Zoom.Parent = PN_Scroll;
+            ZS_Zoom.Parent = PN_Hours;
             ZS_Zoom.Focus();
 
         }
+        
 
         private void PN_Hours_MouseLeave(object sender, EventArgs e)
         {
