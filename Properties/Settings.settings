@@ -15,7 +15,7 @@
       <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="fontEvenementBold" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Microsoft Sans Serif, 8.25pt</Value>
     </Setting>
     <Setting Name="colorLignePrincipale" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">LightGray</Value>
@@ -63,10 +63,10 @@
       <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="fontPN_Days" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Microsoft Sans Serif, 8.25pt</Value>
     </Setting>
     <Setting Name="fontPN_Hours" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Microsoft Sans Serif, 8.25pt</Value>
     </Setting>
     <Setting Name="colorFontPN_Hours" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
