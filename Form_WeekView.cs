@@ -102,7 +102,7 @@ namespace Compact_Agenda
             for (int hour = 0; hour < 24; hour++)
             {
                 DC.DrawLine(pen1, 0, Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
-                DC.DrawLine(pen2, 0, Event.HourToPixel(hour + 1, 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 30, PN_Hours.Height));
+                DC.DrawLine(pen2, 0, Event.HourToPixel(hour, 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour, 30, PN_Hours.Height));
                 if (hour == DateTime.Now.Hour)
                 {
                     for (int min = 0; min < 60; min++)
@@ -893,6 +893,14 @@ namespace Compact_Agenda
                 }
             }
             valeurZoom = ZS_ZoomMaster.Value;
+        }
+
+        private void aujourdhuiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _CurrentWeek = DateTime.Now;
+            GetWeekEvents();
+            PN_Content.Refresh();
+            PN_DaysHeader.Refresh();
         }
     }
 }
