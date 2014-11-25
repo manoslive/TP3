@@ -821,6 +821,7 @@ namespace Compact_Agenda
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.fontPN_Hours = dlg.Font;
+                PN_Hours.Refresh();
             }
         }
 
@@ -832,6 +833,7 @@ namespace Compact_Agenda
             {
                 Properties.Settings.Default.colorFontPN_Hours = dlg.Color;
                 Properties.Settings.Default.Save();
+                PN_Hours.Refresh();
             }
         }
 
