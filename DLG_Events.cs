@@ -232,6 +232,40 @@ namespace Compact_Agenda
                 else
                     LB_Description.ForeColor = Color.Red;
         }
+        private void NUD_OnChange()
+        {
+            if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
+            {
+                if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <= 30)
+                {
+                    NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
+                }
+                if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <= 30)
+                {
+                    NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
+                }
+            }
+            else if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
+            {
+                if (NUD_DebutMinute.Value > 30)
+                {
+                    NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
+                }
+                else
+                {
+                    NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
+                }
+                if (NUD_FinMinute.Value < 30)
+                {
+                    NUD_DebutHeure.Value--;
+                    NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
+                }
+                else
+                {
+                    NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;
+                }
+            }
+        }
         private void NUD_DebutHeure_ValueChanged(object sender, EventArgs e)
         {
             if (!blockUpdate)
@@ -240,7 +274,7 @@ namespace Compact_Agenda
                 {
                     NUD_FinHeure.Value = NUD_DebutHeure.Value;
                 }
-
+                NUD_OnChange();
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
                                                  DTP_Date.Value.Day,
@@ -269,24 +303,7 @@ namespace Compact_Agenda
                         NUD_DebutHeure.Value++;
                     }
                 }
-                if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
-                {
-                    if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <=30)
-                    {
-                        NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
-                    }
-                }
-                else if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
-                {
-                    if (NUD_DebutMinute.Value > 30)
-                    {
-                        NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
-                    }
-                    else
-                    {
-                        NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
-                    }
-                }
+                NUD_OnChange();
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
                                                  DTP_Date.Value.Day,
@@ -304,6 +321,7 @@ namespace Compact_Agenda
                 {
                     NUD_DebutHeure.Value = NUD_FinHeure.Value;
                 }
+                NUD_OnChange();
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
                                                  DTP_Date.Value.Day,
@@ -332,26 +350,7 @@ namespace Compact_Agenda
                         NUD_FinHeure.Value++;
                     }
                 }
-                if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
-                {
-                    if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <= 30)
-                    {
-                        NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
-                    }
-                }
-                else if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
-                {
-                    if (NUD_FinMinute.Value < 30)
-                    {
-                        NUD_DebutHeure.Value--;
-                        NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
-                    }
-                    else
-                    {
-                        NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;
-                    }
-                }
-
+                NUD_OnChange();
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
                                                  DTP_Date.Value.Month,
                                                  DTP_Date.Value.Day,

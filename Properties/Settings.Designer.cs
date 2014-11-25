@@ -332,5 +332,17 @@ namespace Compact_Agenda.Properties {
                 this["positionDateSelect"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Silver")]
+        public global::System.Drawing.Color colorPN_Days_Today {
+            get {
+                return ((global::System.Drawing.Color)(this["colorPN_Days_Today"]));
+            }
+            set {
+                this["colorPN_Days_Today"] = value;
+            }
+        }
     }
 }
