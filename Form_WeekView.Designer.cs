@@ -91,8 +91,6 @@
             this.PN_Frame.TabIndex = 4;
             this.PN_Frame.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Frame_Paint);
             // 
-<<<<<<< HEAD
-<<<<<<< HEAD
             // PN_Scroll
             // 
             this.PN_Scroll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
