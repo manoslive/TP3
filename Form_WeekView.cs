@@ -853,11 +853,26 @@ namespace Compact_Agenda
 
         private void dateSemaineCouranteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            double difference = 0;
+            double dansLaSemaine = 0;
+            int nbDeSemaines = 0;
             DateSelect dlg = new DateSelect();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                _CurrentWeek = dlg.dateSemaineCourante;
-                GetWeekEvents();
+                GotoCurrentWeek();
+                difference = Math.Round(dlg.dateSemaineCourante.Subtract(DateTime.Now).TotalDays);
+                dansLaSemaine = 7 - (Convert.ToInt32(DateTime.Now.DayOfWeek));
+                if (difference < dansLaSemaine)
+                {
+                    GotoCurrentWeek();
+                }
+                else
+                {
+                    nbDeSemaines = Convert.ToInt32(difference / 7);
+                    _CurrentWeek = _CurrentWeek.AddDays(nbDeSemaines * 7);
+                    GetWeekEvents();
+                }
+
                 PN_Content.Refresh();
                 PN_DaysHeader.Refresh();
             }
@@ -903,8 +918,7 @@ namespace Compact_Agenda
 
         private void afficherSemainCouranteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _CurrentWeek = DateTime.Now;
-            GetWeekEvents();
+            GotoCurrentWeek();
             PN_Content.Refresh();
             PN_DaysHeader.Refresh();
         }

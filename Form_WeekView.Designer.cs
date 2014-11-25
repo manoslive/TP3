@@ -54,14 +54,14 @@
             this.couleurDeFondToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.policeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.couleurDeLaPoliceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.afficherSemainCouranteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
             this.ZS_ZoomMaster = new ZoomSliderProject.ZoomSlider();
             this.PB_Fleche = new System.Windows.Forms.PictureBox();
             this.PN_DaysHeader = new Compact_Agenda.DoubleBufferPanel();
-            this.afficherSemainCouranteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.PN_Frame.SuspendLayout();
             this.CM_Event.SuspendLayout();
             this.CM_EnteteJour.SuspendLayout();
@@ -167,7 +167,7 @@
             this.CMI_CouleurLigne,
             this.couleurDeFondDeLaJournéeCouranteToolStripMenuItem});
             this.CM_EnteteJour.Name = "CM_SemaineCourante";
-            this.CM_EnteteJour.Size = new System.Drawing.Size(291, 142);
+            this.CM_EnteteJour.Size = new System.Drawing.Size(291, 120);
             // 
             // CMI_CouleurFond
             // 
@@ -194,7 +194,7 @@
             // 
             this.dateSemaineCouranteToolStripMenuItem.Name = "dateSemaineCouranteToolStripMenuItem";
             this.dateSemaineCouranteToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.dateSemaineCouranteToolStripMenuItem.Text = "Date semaine courante...";
+            this.dateSemaineCouranteToolStripMenuItem.Text = "Afficher la semaine du...";
             this.dateSemaineCouranteToolStripMenuItem.Click += new System.EventHandler(this.dateSemaineCouranteToolStripMenuItem_Click);
             // 
             // CM_SemaineCourante
@@ -281,6 +281,18 @@
             this.couleurDeLaPoliceToolStripMenuItem1.Text = "Couleur de la police...";
             this.couleurDeLaPoliceToolStripMenuItem1.Click += new System.EventHandler(this.couleurDeLaPoliceToolStripMenuItem1_Click);
             // 
+            // afficherSemainCouranteToolStripMenuItem
+            // 
+            this.afficherSemainCouranteToolStripMenuItem.Name = "afficherSemainCouranteToolStripMenuItem";
+            this.afficherSemainCouranteToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
+            this.afficherSemainCouranteToolStripMenuItem.Text = "Afficher la semaine courante...";
+            this.afficherSemainCouranteToolStripMenuItem.Click += new System.EventHandler(this.afficherSemainCouranteToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(287, 6);
+            // 
             // PN_Scroll
             // 
             this.PN_Scroll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -363,18 +375,6 @@
             this.PN_DaysHeader.TabIndex = 0;
             this.PN_DaysHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_DaysHeader_Paint);
             this.PN_DaysHeader.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_DaysHeader_MouseClick);
-            // 
-            // afficherSemainCouranteToolStripMenuItem
-            // 
-            this.afficherSemainCouranteToolStripMenuItem.Name = "afficherSemainCouranteToolStripMenuItem";
-            this.afficherSemainCouranteToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.afficherSemainCouranteToolStripMenuItem.Text = "Afficher semain courante...";
-            this.afficherSemainCouranteToolStripMenuItem.Click += new System.EventHandler(this.afficherSemainCouranteToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(287, 6);
             // 
             // Form_WeekView
             // 
