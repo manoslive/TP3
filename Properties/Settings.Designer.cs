@@ -235,5 +235,99 @@ namespace Compact_Agenda.Properties {
                 this["colorEvent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color colorPN_Days {
+            get {
+                return ((global::System.Drawing.Color)(this["colorPN_Days"]));
+            }
+            set {
+                this["colorPN_Days"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color colorPN_Hours {
+            get {
+                return ((global::System.Drawing.Color)(this["colorPN_Hours"]));
+            }
+            set {
+                this["colorPN_Hours"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Font fontPN_Days {
+            get {
+                return ((global::System.Drawing.Font)(this["fontPN_Days"]));
+            }
+            set {
+                this["fontPN_Days"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Font fontPN_Hours {
+            get {
+                return ((global::System.Drawing.Font)(this["fontPN_Hours"]));
+            }
+            set {
+                this["fontPN_Hours"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color colorFontPN_Hours {
+            get {
+                return ((global::System.Drawing.Color)(this["colorFontPN_Hours"]));
+            }
+            set {
+                this["colorFontPN_Hours"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color colorFontPN_days {
+            get {
+                return ((global::System.Drawing.Color)(this["colorFontPN_days"]));
+            }
+            set {
+                this["colorFontPN_days"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color colorLigneDaysHeader {
+            get {
+                return ((global::System.Drawing.Color)(this["colorLigneDaysHeader"]));
+            }
+            set {
+                this["colorLigneDaysHeader"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point positionDateSelect {
+            get {
+                return ((global::System.Drawing.Point)(this["positionDateSelect"]));
+            }
+            set {
+                this["positionDateSelect"] = value;
+            }
+        }
     }
 }
