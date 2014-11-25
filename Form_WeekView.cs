@@ -29,9 +29,9 @@ namespace Compact_Agenda
     {
         public string ConnexionString;
         private DateTime _CurrentWeek;
-        private ZoomSlider ZS_Zoom = new ZoomSlider();
         private Events evenement = new Events();
         private int minInterval = 5;
+        private int valeurZoom = 0;
         public DateTime CurrentWeek
         {
             set
@@ -634,38 +634,32 @@ namespace Compact_Agenda
 
         private void CMI_Reporter_Click(object sender, EventArgs e)
         {
-            evenement.TargetEvent.Starting = new DateTime();
-            //evenement.TargetEvent.Starting.Year,
-            //evenement.TargetEvent.Starting.Month,
-            //evenement.TargetEvent.Starting.Day + 7,
-            //evenement.TargetEvent.Starting.Hour,
-            //evenement.TargetEvent.Starting.Minute,
-            //0);
+            //evenement.TargetEvent.Starting = new DateTime(
+            //                                              evenement.TargetEvent.Starting.Year,
+            //                                              evenement.TargetEvent.Starting.Month,
+            //                                              evenement.TargetEvent.Starting.Day + 1,
+            //                                              evenement.TargetEvent.Starting.Hour,
+            //                                              evenement.TargetEvent.Starting.Minute,
+            //                                              0);
             evenement.TargetEvent.Starting = evenement.TargetEvent.Starting.AddDays(7);
-
-            evenement.TargetEvent.Ending = new DateTime();
-            //evenement.TargetEvent.Ending.Year,
-            //evenement.TargetEvent.Ending.Month,
-            //evenement.TargetEvent.Ending.Day + 7,
-            //evenement.TargetEvent.Ending.Hour,
-            //evenement.TargetEvent.Ending.Minute,
-            //0);
             evenement.TargetEvent.Ending = evenement.TargetEvent.Ending.AddDays(7);
+            //AjustCurrentWeek();
             GetWeekEvents();
-            PN_Content.Refresh();
+            //PN_Content.Refresh();
         }
         private void CMI_Dupliquer_Click(object sender, EventArgs e)
         {
             Event duplicata = new Event();
             duplicata = evenement.TargetEvent.Klone();
+            evenement.Add(duplicata);
             duplicata.Starting.AddHours(1);
             duplicata.Ending.AddHours(1);
 
-
+            AjustCurrentWeek();
             //Event newEvent = new Event(evenement.TargetEvent.Id, evenement.TargetEvent.Title, evenement.TargetEvent.Description, evenement.TargetEvent.Starting.AddDays(1), evenement.TargetEvent.Ending.AddDays(1), evenement.TargetEvent.Category);
             //evenement.Add(newEvent);
-            //GetWeekEvents();
-            //PN_Content.Refresh();
+            GetWeekEvents();
+            PN_Content.Refresh();
         }
 
         private void PN_DaysHeader_MouseClick(object sender, MouseEventArgs e)
@@ -778,16 +772,15 @@ namespace Compact_Agenda
 
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
-            ZS_Zoom.Visible = true;
-            ZS_Zoom.Parent = PN_Hours;
-            ZS_Zoom.Focus();
-
+            Point zoom = new Point(Cursor.Position.X - 20, Cursor.Position.Y);
+            ZS_ZoomMaster.Location = zoom;
+            // ZS_ZoomMaster.Visible = true;
         }
-        
+
 
         private void PN_Hours_MouseLeave(object sender, EventArgs e)
         {
-            ZS_Zoom.Visible = false;
+            // ZS_ZoomMaster.Visible = false;
         }
 
         private void CMI_CouleurFond_Click(object sender, EventArgs e)
@@ -861,5 +854,30 @@ namespace Compact_Agenda
 
         }
 
+        private void ZS_ZoomMaster_ValueChanged(object sender, EventArgs e)
+        {
+            if (valeurZoom > ZS_ZoomMaster.Value)
+            {
+
+                if (PN_Content.Height >= (PN_Frame.Height))
+                {
+                    PN_Content.Height -= 250;
+                    PN_Hours.Height -= 250;
+                    PN_Content.Refresh();
+                    PN_Hours.Refresh();
+                }
+            }
+            else if (valeurZoom < ZS_ZoomMaster.Value)
+            {
+                if (PN_Content.Height < PN_Frame.Height * 12)
+                {
+                    PN_Content.Height += 250;
+                    PN_Hours.Height += 250;
+                    PN_Content.Refresh();
+                    PN_Hours.Refresh();
+                }
+            }
+            valeurZoom = ZS_ZoomMaster.Value;
+        }
     }
 }

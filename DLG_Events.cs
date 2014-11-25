@@ -30,8 +30,6 @@ namespace Compact_Agenda
             PB_Important.BackColor = Properties.Settings.Default.colorImportant;
             PB_Loisir.BackColor = Properties.Settings.Default.colorLoisir;
             PB_Autre.BackColor = Properties.Settings.Default.colorAutre;
-            TBX_Description.ForeColor = Properties.Settings.Default.colorFontEvenement;
-            TBX_Title.ForeColor = Properties.Settings.Default.colorFontEvenement;
             delete = false;
             EventToDLG();
             if (deleteCM)
@@ -169,7 +167,7 @@ namespace Compact_Agenda
             if (MessageBox.Show("Voulez vous vraiment effacer cet événement ?", "Effacer", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                delete = true;           
+                delete = true;
             }
             this.Close();
         }
@@ -257,7 +255,10 @@ namespace Compact_Agenda
                 if (NUD_DebutMinute.Value <= -5)
                 {
                     NUD_DebutMinute.Value = 55;
-                    NUD_DebutHeure.Value--;
+                    if (NUD_DebutHeure.Value < 2)
+                        NUD_DebutMinute.Value = 55;
+                    else
+                        NUD_DebutHeure.Value--;
                 }
                 else if (NUD_DebutMinute.Value >= 60)
                 {
@@ -271,7 +272,7 @@ namespace Compact_Agenda
                 }
                 if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
                 {
-                    if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <=30)
+                    if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <= 30)
                     {
                         NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
                     }
