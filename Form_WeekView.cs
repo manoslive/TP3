@@ -102,7 +102,7 @@ namespace Compact_Agenda
             for (int hour = 0; hour < 24; hour++)
             {
                 DC.DrawLine(pen1, 0, Event.HourToPixel(hour + 1, 0, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 0, PN_Hours.Height));
-                DC.DrawLine(pen2, 0, Event.HourToPixel(hour + 1, 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour + 1, 30, PN_Hours.Height));
+                DC.DrawLine(pen2, 0, Event.HourToPixel(hour , 30, PN_Hours.Height), PN_Content.Width, Event.HourToPixel(hour, 30, PN_Hours.Height));
                 if (hour == DateTime.Now.Hour)
                 {
                     for (int min = 0; min < 60; min++)
@@ -140,6 +140,7 @@ namespace Compact_Agenda
             DateTime date = _CurrentWeek;
             string[] dayNames = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.DayNames;//[col].Substring(0, 3).ToUpper();
             Pen pen = new Pen(Color.Black, 1);
+            Pen penLignes = new Pen(Properties.Settings.Default.colorLigneDaysHeader);
             Brush brush = new SolidBrush(Color.White);
             for (int dayNum = 0; dayNum < 7; dayNum++)
             {
@@ -149,7 +150,7 @@ namespace Compact_Agenda
                 String headerDate = date.ToShortDateString();
                 if (Convert.ToInt32(DateTime.Now.DayOfWeek) == dayNum && DateTime.Now.Day == date.Day) //si le jour de la semaine est pareille que le jour de semaine actuel, 
                 {
-                    pen = new Pen(Color.Silver, (PN_DaysHeader.Width / 7f) - 2);
+                    pen = new Pen(Properties.Settings.Default.colorPN_Days_Today, (PN_DaysHeader.Width / 7f) - 2);
                     brush = new SolidBrush(Color.Black);
                     DC.DrawLine(pen, (location.X + location2.X) / 2, 0, (location.X + location2.X) / 2, PN_DaysHeader.Height - 1); //surligne la journée d'aujourd'hui 
                 }
@@ -158,14 +159,15 @@ namespace Compact_Agenda
                     pen = new Pen(Color.LightGray, 1);
                     brush = new SolidBrush(Color.White);
                 }
+                DC.DrawLine(penLignes, location.X, 0, location.X, PN_DaysHeader.Height);
                 DC.DrawString(headerText, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.05), location.Y);//afficher à un pourcentage de la location
                 DC.DrawString(headerDate, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.05), location.Y + 14);//""      
                 date = date.AddDays(1);
             }
-            pen = new Pen(Color.LightGray, 2);
-            DC.DrawLine(pen, 0, PN_DaysHeader.Height + 2, PN_DaysHeader.Width + 2, PN_DaysHeader.Height);//ligne qui sépare le PN_DaysHeader de reste
+            DC.DrawLine(penLignes, 0, PN_DaysHeader.Height-1, PN_DaysHeader.Width, PN_DaysHeader.Height-1);
+            DC.DrawLine(penLignes, PN_DaysHeader.Width-2, 0, PN_DaysHeader.Width-2, PN_DaysHeader.Height);//ligne qui sépare le PN_DaysHeader de reste
             location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * 7), 0);
-            DC.DrawLine(pen, location.X - 1, 0, location.X - 1, PN_DaysHeader.Height); //ligne completement à la droite
+            DC.DrawLine(penLignes, location.X - 1, 0, location.X - 1, PN_DaysHeader.Height); //ligne completement à la droite
         }
 
         private void Fill_Hours_Header(Graphics DC)
@@ -810,6 +812,7 @@ namespace Compact_Agenda
         private void policeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FontDialog dlg = new FontDialog();
+            dlg.MaxSize = 10;
             dlg.Font = Properties.Settings.Default.fontPN_Hours;
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -838,6 +841,7 @@ namespace Compact_Agenda
             {
                 Properties.Settings.Default.colorLigneDaysHeader = dlg.Color;
                 Properties.Settings.Default.Save();
+                PN_DaysHeader.Refresh();
             }
         }
 
@@ -852,6 +856,17 @@ namespace Compact_Agenda
                 PN_DaysHeader.Refresh();
             }
 
+        }
+        private void couleurDeFondDeLaJournéeCouranteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = Properties.Settings.Default.colorPN_Days_Today;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.colorPN_Days_Today = dlg.Color;
+                Properties.Settings.Default.Save();
+                PN_DaysHeader.Refresh();
+            }
         }
 
         private void ZS_ZoomMaster_ValueChanged(object sender, EventArgs e)
