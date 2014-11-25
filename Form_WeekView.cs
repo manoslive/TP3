@@ -29,6 +29,7 @@ namespace Compact_Agenda
     {
         public string ConnexionString;
         private DateTime _CurrentWeek;
+        private bool EstPasse = false;
         private Events evenement = new Events();
         private int minInterval = 5;
         private int valeurZoom = 0;
@@ -774,15 +775,20 @@ namespace Compact_Agenda
 
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
-            Point zoom = new Point(Cursor.Position.X - 20, Cursor.Position.Y);
-            ZS_ZoomMaster.Location = zoom;
-            // ZS_ZoomMaster.Visible = true;
+            EstPasse = true;
+            if (EstPasse)
+            {
+                //Point zoom = new Point(Cursor.Position.X - 20, Cursor.Position.Y);
+                ZS_ZoomMaster.Visible = true;
+                ZS_ZoomMaster.Location = Cursor.Position;
+            }
         }
 
 
         private void PN_Hours_MouseLeave(object sender, EventArgs e)
         {
-            // ZS_ZoomMaster.Visible = false;
+            EstPasse = false;
+            ZS_ZoomMaster.Visible = false;
         }
 
         private void CMI_CouleurFond_Click(object sender, EventArgs e)
