@@ -165,8 +165,8 @@ namespace Compact_Agenda
                 DC.DrawString(headerDate, PN_DaysHeader.Font, brush, Convert.ToInt32(location.X * 1.05), location.Y + 14);//""      
                 date = date.AddDays(1);
             }
-            DC.DrawLine(penLignes, 0, PN_DaysHeader.Height-1, PN_DaysHeader.Width, PN_DaysHeader.Height-1);
-            DC.DrawLine(penLignes, PN_DaysHeader.Width-2, 0, PN_DaysHeader.Width-2, PN_DaysHeader.Height);//ligne qui sépare le PN_DaysHeader de reste
+            DC.DrawLine(penLignes, 0, PN_DaysHeader.Height - 1, PN_DaysHeader.Width, PN_DaysHeader.Height - 1);
+            DC.DrawLine(penLignes, PN_DaysHeader.Width - 2, 0, PN_DaysHeader.Width - 2, PN_DaysHeader.Height);//ligne qui sépare le PN_DaysHeader de reste
             location = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * 7), 0);
             DC.DrawLine(penLignes, location.X - 1, 0, location.X - 1, PN_DaysHeader.Height); //ligne completement à la droite
         }
@@ -775,12 +775,12 @@ namespace Compact_Agenda
 
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
-            EstPasse = true;
-            if (EstPasse)
+            if (!EstPasse)
             {
-                //Point zoom = new Point(Cursor.Position.X - 20, Cursor.Position.Y);
+                Point zoom = new Point(Cursor.Position.X - 20, Cursor.Position.Y);
+                ZS_ZoomMaster.Location = zoom;
                 ZS_ZoomMaster.Visible = true;
-                ZS_ZoomMaster.Location = Cursor.Position;
+                EstPasse = true;
             }
         }
 
