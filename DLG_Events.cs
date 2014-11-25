@@ -166,12 +166,12 @@ namespace Compact_Agenda
 
         private void Effacer()
         {
-            if (MessageBox.Show("Voulez vous vraiment effacer cet événement ?") == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Voulez vous vraiment effacer cet événement ?", "Effacer", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                delete = true;
-                this.Close();
+                delete = true;           
             }
+            this.Close();
         }
 
         private void BTN_Effacer_Click(object sender, EventArgs e)
