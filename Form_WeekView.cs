@@ -31,7 +31,7 @@ namespace Compact_Agenda
         private DateTime _CurrentWeek;
         private Events evenement = new Events();
         private int minInterval = 5;
-        private int valeurZoom = 0;
+        private int valeurZoom = 50;
         public DateTime CurrentWeek
         {
             set
@@ -481,6 +481,22 @@ namespace Compact_Agenda
             PN_Content.Refresh();
             PN_DaysHeader.Refresh();
         }
+        private void Increment_Month()
+        {
+            _CurrentWeek = _CurrentWeek.AddMonths(1);
+            GetWeekEvents();
+            PN_Content.Refresh();
+            PN_DaysHeader.Refresh();
+            PN_DaysHeader.Refresh();
+        }
+
+        private void Decrement_Month()
+        {
+            _CurrentWeek = _CurrentWeek.AddMonths(-1);
+            GetWeekEvents();
+            PN_Content.Refresh();
+            PN_DaysHeader.Refresh();
+        }
 
         private void GotoCurrentWeek()
         {
@@ -550,55 +566,8 @@ namespace Compact_Agenda
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            switch (keyData)
-            {
-                case Keys.Down: // Incrémenter d'un mois la semaine courrante
-
-                    // Fonction temporaire pour voir comment dézommer
-                    if (!mouseIsDown)
-                    {
-                        if (PN_Content.Height > (PN_Frame.Height))
-                        {
-                            PN_Content.Height -= 200;
-                            PN_Hours.Height -= 200;
-                            PN_Content.Refresh();
-                            PN_Hours.Refresh();
-                        }
-                    }
-                    break;
-                case Keys.Right: // Incrémenter d'une semaine la semaine courrante
-                    if (!mouseIsDown)
-                        Increment_Week();
-
-                    break;
-                case Keys.Up: // Décrémenter d'un mois la semaine courrante
-
-                    // Fonction temporaire pour voir comment zommer
-                    if (!mouseIsDown)
-                    {
-                        if (PN_Content.Height < PN_Frame.Height * 12)
-                        {
-                            PN_Content.Height += 200;
-                            PN_Hours.Height += 200;
-                            PN_Content.Refresh();
-                            PN_Hours.Refresh();
-                        }
-                    }
-                    break;
-                case Keys.Left:// Décrémenter d'une semaine la semaine courrante
-                    if (!mouseIsDown)
-                        Decrement_Week();
-
-                    break;
-
-                case Keys.Space:
-                    if (!mouseIsDown)
-                        GotoCurrentWeek();
-                    break;
-            }
-            bool result = base.ProcessCmdKey(ref msg, keyData);
-            PN_Scroll.Focus();
-            return result;
+            // Merci
+            return true;
         }
 
         private void PN_Content_Resize(object sender, EventArgs e)
@@ -647,11 +616,11 @@ namespace Compact_Agenda
         private void CMI_Dupliquer_Click(object sender, EventArgs e)
         {
             TableEvents tableevents = new TableEvents(ConnexionString); // alex was here
-            Event duplicata = evenement.TargetEvent; 
+            Event duplicata = evenement.TargetEvent;
 
             duplicata.Starting = duplicata.Starting.AddHours(1);
             duplicata.Ending = duplicata.Ending.AddHours(1);
-            tableevents.AddEvent(duplicata); 
+            tableevents.AddEvent(duplicata);
 
             GetWeekEvents();
             PN_Content.Refresh();
@@ -767,19 +736,14 @@ namespace Compact_Agenda
 
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
-            //ZS_ZoomMaster.Refresh();
-            //ZS_ZoomMaster.Visible = true;
-
-                Point zoom = new Point(0, Cursor.Position.Y);
-                ZS_ZoomMaster.Location = zoom;
+            Point zoom = new Point(0, Cursor.Position.Y);
+            ZS_ZoomMaster.Location = zoom;
         }
 
 
         private void PN_Hours_MouseLeave(object sender, EventArgs e)
         {
-            ZS_ZoomMaster.Location = new Point(PN_Hours.Height,PN_Hours.Width);
-            //ZS_ZoomMaster.Visible = false;
-            //ZS_ZoomMaster.Refresh();
+
         }
 
         private void CMI_CouleurFond_Click(object sender, EventArgs e)
@@ -888,8 +852,8 @@ namespace Compact_Agenda
 
                 if (PN_Content.Height >= (PN_Frame.Height))
                 {
-                    PN_Content.Height -= 225;
-                    PN_Hours.Height -= 225;
+                    PN_Content.Height -= 200;
+                    PN_Hours.Height -= 200;
                     PN_Content.Refresh();
                     PN_Hours.Refresh();
                 }
@@ -898,8 +862,8 @@ namespace Compact_Agenda
             {
                 if (PN_Content.Height < PN_Frame.Height * 12)
                 {
-                    PN_Content.Height += 225;
-                    PN_Hours.Height += 225;
+                    PN_Content.Height += 200;
+                    PN_Hours.Height += 200;
                     PN_Content.Refresh();
                     PN_Hours.Refresh();
                 }
@@ -912,6 +876,72 @@ namespace Compact_Agenda
             GotoCurrentWeek();
             PN_Content.Refresh();
             PN_DaysHeader.Refresh();
+        }
+
+        private void Form_WeekView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Add) // Augmente le zoom
+            {
+                if (!mouseIsDown)
+                    if (PN_Content.Height < PN_Frame.Height * 12)
+                    {
+                        PN_Content.Height += 200;
+                        PN_Hours.Height += 200;
+                        PN_Content.Refresh();
+                        PN_Hours.Refresh();
+                    }
+            }
+            else if (e.KeyChar == (char)Keys.Subtract) // Diminue le zoom
+            {
+                if (!mouseIsDown)
+                    if (PN_Content.Height > (PN_Frame.Height))
+                    {
+                        PN_Content.Height -= 200;
+                        PN_Hours.Height -= 200;
+                        PN_Content.Refresh();
+                        PN_Hours.Refresh();
+                    }
+            }
+            else if (e.KeyChar == (char)Keys.Up) // Augmente de un le mois de 1
+            {
+                if (!mouseIsDown)
+                    Increment_Month();
+            }
+            else if (e.KeyChar == (char)Keys.Down) // Réduit de un le mois de 1
+            {
+                if (!mouseIsDown)
+                    Decrement_Month();
+            }
+            else if (e.KeyChar == (char)Keys.Right)
+            {
+                if (!mouseIsDown)
+                    Increment_Week();
+            }
+            else if (e.KeyChar == (char)Keys.Left)
+            {
+                if (!mouseIsDown)
+                    Decrement_Week();
+            }
+            else if (e.KeyChar == (char)Keys.Space)
+            {
+                if (!mouseIsDown)
+                    GotoCurrentWeek();
+            }
+            else if (e.KeyChar == (char)Keys.ControlKey && e.KeyChar == (char)Keys.Q)
+            {
+                if (!mouseIsDown)
+                    GotoCurrentWeek();
+            }
+            else if (e.KeyChar == (char)Keys.F1)
+            {
+                MessageBox.Show("Voici un merveilleux message d'aide!\n" +
+                                "bla bla\n" +
+                                "fwfwfwfwwfw");
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

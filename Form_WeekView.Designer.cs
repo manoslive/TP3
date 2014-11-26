@@ -58,8 +58,8 @@
             this.couleurDeLaPoliceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
-            this.ZS_ZoomMaster = new ZoomSliderProject.ZoomSlider();
             this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
+            this.ZS_ZoomMaster = new ZoomSliderProject.ZoomSlider();
             this.PB_Fleche = new System.Windows.Forms.PictureBox();
             this.PN_DaysHeader = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Frame.SuspendLayout();
@@ -327,19 +327,6 @@
             this.PN_Content.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseUp);
             this.PN_Content.Resize += new System.EventHandler(this.PN_Content_Resize);
             // 
-            // ZS_ZoomMaster
-            // 
-            this.ZS_ZoomMaster.BackColor = System.Drawing.Color.White;
-            this.ZS_ZoomMaster.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ZS_ZoomMaster.BackgroundImage")));
-            this.ZS_ZoomMaster.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ZS_ZoomMaster.Location = new System.Drawing.Point(28, 0);
-            this.ZS_ZoomMaster.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ZS_ZoomMaster.Name = "ZS_ZoomMaster";
-            this.ZS_ZoomMaster.Size = new System.Drawing.Size(26, 231);
-            this.ZS_ZoomMaster.TabIndex = 2;
-            this.ZS_ZoomMaster.Value = 50;
-            this.ZS_ZoomMaster.ValueChanged += new ZoomSliderProject.ZoomSlider.ValueChangedHandler(this.ZS_ZoomMaster_ValueChanged);
-            // 
             // PN_Hours
             // 
             this.PN_Hours.Controls.Add(this.ZS_ZoomMaster);
@@ -353,6 +340,19 @@
             this.PN_Hours.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_Hours_MouseClick);
             this.PN_Hours.MouseEnter += new System.EventHandler(this.PN_Hours_MouseEnter);
             this.PN_Hours.MouseLeave += new System.EventHandler(this.PN_Hours_MouseLeave);
+            // 
+            // ZS_ZoomMaster
+            // 
+            this.ZS_ZoomMaster.BackColor = System.Drawing.Color.White;
+            this.ZS_ZoomMaster.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ZS_ZoomMaster.BackgroundImage")));
+            this.ZS_ZoomMaster.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ZS_ZoomMaster.Location = new System.Drawing.Point(28, 0);
+            this.ZS_ZoomMaster.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ZS_ZoomMaster.Name = "ZS_ZoomMaster";
+            this.ZS_ZoomMaster.Size = new System.Drawing.Size(26, 231);
+            this.ZS_ZoomMaster.TabIndex = 2;
+            this.ZS_ZoomMaster.Value = 50;
+            this.ZS_ZoomMaster.ValueChanged += new ZoomSliderProject.ZoomSlider.ValueChangedHandler(this.ZS_ZoomMaster_ValueChanged);
             // 
             // PB_Fleche
             // 
@@ -393,6 +393,7 @@
             this.Text = "Agenda compacte...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_WeekView_FormClosing);
             this.Load += new System.EventHandler(this.Form_WeekView_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form_WeekView_KeyPress);
             this.PN_Frame.ResumeLayout(false);
             this.CM_Event.ResumeLayout(false);
             this.CM_EnteteJour.ResumeLayout(false);
