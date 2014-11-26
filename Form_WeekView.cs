@@ -568,30 +568,8 @@ namespace Compact_Agenda
         {
             switch (keyData)
             {
-                case Keys.Add: // Incrémenter d'un mois la semaine courrante
-
-                    // Fonction temporaire pour voir comment dézommer
+                case Keys.Add: // Augmente le zoom
                     if (!mouseIsDown)
-                    {
-                        if (PN_Content.Height > (PN_Frame.Height))
-                        {
-                            PN_Content.Height -= 200;
-                            PN_Hours.Height -= 200;
-                            PN_Content.Refresh();
-                            PN_Hours.Refresh();
-                        }
-                    }
-                    break;
-                case Keys.Subtract: // Incrémenter d'une semaine la semaine courrante
-                    if (!mouseIsDown)
-                        Increment_Week();
-
-                    break;
-                case Keys.Up: // Décrémenter d'un mois la semaine courrante
-
-                    // Fonction temporaire pour voir comment zommer
-                    if (!mouseIsDown)
-                    {
                         if (PN_Content.Height < PN_Frame.Height * 12)
                         {
                             PN_Content.Height += 200;
@@ -599,32 +577,67 @@ namespace Compact_Agenda
                             PN_Content.Refresh();
                             PN_Hours.Refresh();
                         }
+                    valeurZoom = ZS_ZoomMaster.Value;
+                    break;
+                case Keys.Subtract: // Diminue le zoom
+                    {
+                        if (!mouseIsDown)
+                            if (PN_Content.Height > (PN_Frame.Height))
+                            {
+                                PN_Content.Height -= 200;
+                                PN_Hours.Height -= 200;
+                                PN_Content.Refresh();
+                                PN_Hours.Refresh();
+                            }
+                        valeurZoom = ZS_ZoomMaster.Value;
                     }
                     break;
-                case Keys.Left:// Décrémenter d'une semaine la semaine courrante
-                    if (!mouseIsDown)
-                        Decrement_Week();
+                case Keys.Up: // Augmente de un le mois de 1
+                        if (!mouseIsDown)
+                            Increment_Month();
+                    break;
+                case Keys.Down: // Réduit de un le mois de 1
+                    {
+                        if (!mouseIsDown)
+                            Decrement_Month();
+                    }
+                    break;
+                case Keys.Right:
+                    {
+                        if (!mouseIsDown)
+                            Increment_Week();
+                    }
+                    break;
+                case Keys.Left:
+                    {
+                        if (!mouseIsDown)
+                            Decrement_Week();
+                    }
                     break;
                 case Keys.Space:
-                    if (!mouseIsDown)
-                        GotoCurrentWeek();
+                    {
+                        if (!mouseIsDown)
+                            GotoCurrentWeek();
+                    }
+                    break;
+                case Keys.ControlKey & Keys.Q:
+                    {
+                        if (!mouseIsDown)
+                            GotoCurrentWeek();
+                    }
                     break;
                 case Keys.F1:
-                    if (!mouseIsDown)
-                        MessageBox.Show("Voici un merveilleux message d'aide!\n" +
-                                        "bla bla\n" +
-                                        "fwfwfwfwwfw");
+                    {
+                        MessageBox.Show("A-ttroce\n" +
+                                        "I-llusion\n" +
+                                        "D-éfaite\n" +
+                                        "E-ntorse");
+                    }
                     break;
-                //case Keys.:
-                //    if (!mouseIsDown)
-                //        MessageBox.Show("Voici un merveilleux message d'aide!\n" +
-                //                        "bla bla\n" +
-                //                        "fwfwfwfwwfw");
-                //    break;
-            }
+            }                    
             bool result = base.ProcessCmdKey(ref msg, keyData);
-            PN_Scroll.Focus();
-            return result;
+                    PN_Scroll.Focus();
+                    return result;
         }
 
         private void PN_Content_Resize(object sender, EventArgs e)
@@ -673,11 +686,11 @@ namespace Compact_Agenda
         private void CMI_Dupliquer_Click(object sender, EventArgs e)
         {
             TableEvents tableevents = new TableEvents(ConnexionString); // alex was here
-            Event duplicata = evenement.TargetEvent; 
+            Event duplicata = evenement.TargetEvent;
 
             duplicata.Starting = duplicata.Starting.AddHours(1);
             duplicata.Ending = duplicata.Ending.AddHours(1);
-            tableevents.AddEvent(duplicata); 
+            tableevents.AddEvent(duplicata);
 
             GetWeekEvents();
             PN_Content.Refresh();
@@ -793,8 +806,8 @@ namespace Compact_Agenda
 
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
-                Point zoom = new Point(0, Cursor.Position.Y);
-                ZS_ZoomMaster.Location = zoom;
+            Point zoom = new Point(0, Cursor.Position.Y);
+            ZS_ZoomMaster.Location = zoom;
         }
 
 
@@ -937,68 +950,7 @@ namespace Compact_Agenda
 
         private void Form_WeekView_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Add) // Augmente le zoom
-            {
-                if (!mouseIsDown)
-                    if (PN_Content.Height < PN_Frame.Height * 12)
-                    {
-                        PN_Content.Height += 200;
-                        PN_Hours.Height += 200;
-                        PN_Content.Refresh();
-                        PN_Hours.Refresh();
-                    }
-            }
-            else if (e.KeyChar == (char)Keys.Subtract) // Diminue le zoom
-            {
-                if (!mouseIsDown)
-                    if (PN_Content.Height > (PN_Frame.Height))
-                    {
-                        PN_Content.Height -= 200;
-                        PN_Hours.Height -= 200;
-                        PN_Content.Refresh();
-                        PN_Hours.Refresh();
-                    }
-            }
-            else if (e.KeyChar == (char)Keys.Up) // Augmente de un le mois de 1
-            {
-                if (!mouseIsDown)
-                    Increment_Month();
-            }
-            else if (e.KeyChar == (char)Keys.Down) // Réduit de un le mois de 1
-            {
-                if (!mouseIsDown)
-                    Decrement_Month();
-            }
-            else if (e.KeyChar == (char)Keys.Right)
-            {
-                if (!mouseIsDown)
-                    Increment_Week();
-            }
-            else if (e.KeyChar == (char)Keys.Left)
-            {
-                if (!mouseIsDown)
-                    Decrement_Week();
-            }
-            else if (e.KeyChar == (char)Keys.Space)
-            {
-                if (!mouseIsDown)
-                    GotoCurrentWeek();
-            }
-            else if (e.KeyChar == (char)Keys.ControlKey && e.KeyChar == (char)Keys.Q)
-            {
-                if (!mouseIsDown)
-                    GotoCurrentWeek();
-            }
-            else if (e.KeyChar == (char)Keys.F1)
-            {
-                MessageBox.Show("Voici un merveilleux message d'aide!\n" +
-                                "bla bla\n" +
-                                "fwfwfwfwwfw");
-            }
-            else
-            {
-                e.Handled = true;
-            }
+
         }
     }
 }
