@@ -283,6 +283,66 @@ namespace Compact_Agenda.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ICON_FlecheDroite {
+            get {
+                object obj = ResourceManager.GetObject("ICON_FlecheDroite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICON_FlecheDroite_Click {
+            get {
+                object obj = ResourceManager.GetObject("ICON_FlecheDroite_Click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICON_FlecheDroite_Over {
+            get {
+                object obj = ResourceManager.GetObject("ICON_FlecheDroite_Over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICON_FlecheGauche {
+            get {
+                object obj = ResourceManager.GetObject("ICON_FlecheGauche", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICON_FlecheGauche_Click {
+            get {
+                object obj = ResourceManager.GetObject("ICON_FlecheGauche_Click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICON_FlecheGauche_Over {
+            get {
+                object obj = ResourceManager.GetObject("ICON_FlecheGauche_Over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ICON_Left_Click {
             get {
                 object obj = ResourceManager.GetObject("ICON_Left_Click", resourceCulture);
