@@ -345,7 +345,7 @@
             this.NUD_DebutHeure.Name = "NUD_DebutHeure";
             this.NUD_DebutHeure.Size = new System.Drawing.Size(39, 20);
             this.NUD_DebutHeure.TabIndex = 50;
-            this.NUD_DebutHeure.ValueChanged += new System.EventHandler(this.NUD_DebutHeure_ValueChanged);
+            this.NUD_DebutHeure.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NUD_DebutHeure_MouseUp);
             // 
             // NUD_DebutMinute
             // 
@@ -356,15 +356,15 @@
             0});
             this.NUD_DebutMinute.Location = new System.Drawing.Point(133, 242);
             this.NUD_DebutMinute.Margin = new System.Windows.Forms.Padding(1);
-            this.NUD_DebutMinute.Minimum = new decimal(new int[] {
-            5,
+            this.NUD_DebutMinute.Maximum = new decimal(new int[] {
+            55,
             0,
             0,
-            -2147483648});
+            0});
             this.NUD_DebutMinute.Name = "NUD_DebutMinute";
             this.NUD_DebutMinute.Size = new System.Drawing.Size(39, 20);
             this.NUD_DebutMinute.TabIndex = 50;
-            this.NUD_DebutMinute.ValueChanged += new System.EventHandler(this.NUD_DebutMinute_ValueChanged);
+            this.NUD_DebutMinute.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NUD_DebutMinute_MouseUp);
             // 
             // NUD_FinHeure
             // 
@@ -378,7 +378,7 @@
             this.NUD_FinHeure.Name = "NUD_FinHeure";
             this.NUD_FinHeure.Size = new System.Drawing.Size(39, 20);
             this.NUD_FinHeure.TabIndex = 50;
-            this.NUD_FinHeure.ValueChanged += new System.EventHandler(this.NUD_FinHeure_ValueChanged);
+            this.NUD_FinHeure.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NUD_FinHeure_MouseUp);
             // 
             // NUD_FinMinute
             // 
@@ -389,15 +389,15 @@
             0});
             this.NUD_FinMinute.Location = new System.Drawing.Point(133, 268);
             this.NUD_FinMinute.Margin = new System.Windows.Forms.Padding(1);
-            this.NUD_FinMinute.Minimum = new decimal(new int[] {
-            5,
+            this.NUD_FinMinute.Maximum = new decimal(new int[] {
+            55,
             0,
             0,
-            -2147483648});
+            0});
             this.NUD_FinMinute.Name = "NUD_FinMinute";
             this.NUD_FinMinute.Size = new System.Drawing.Size(39, 20);
             this.NUD_FinMinute.TabIndex = 50;
-            this.NUD_FinMinute.ValueChanged += new System.EventHandler(this.NUD_FinMinute_ValueChanged);
+            this.NUD_FinMinute.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NUD_FinMinute_MouseUp);
             // 
             // LB_2PointsDebut
             // 

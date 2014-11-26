@@ -31,7 +31,7 @@ namespace Compact_Agenda
         private DateTime _CurrentWeek;
         private Events evenement = new Events();
         private int minInterval = 5;
-        private int valeurZoom = 0;
+        private int valeurZoom = 50;
         public DateTime CurrentWeek
         {
             set
@@ -552,7 +552,7 @@ namespace Compact_Agenda
         {
             switch (keyData)
             {
-                case Keys.Down: // Incrémenter d'un mois la semaine courrante
+                case Keys.Add: // Incrémenter d'un mois la semaine courrante
 
                     // Fonction temporaire pour voir comment dézommer
                     if (!mouseIsDown)
@@ -566,7 +566,7 @@ namespace Compact_Agenda
                         }
                     }
                     break;
-                case Keys.Right: // Incrémenter d'une semaine la semaine courrante
+                case Keys.Subtract: // Incrémenter d'une semaine la semaine courrante
                     if (!mouseIsDown)
                         Increment_Week();
 
@@ -588,13 +588,23 @@ namespace Compact_Agenda
                 case Keys.Left:// Décrémenter d'une semaine la semaine courrante
                     if (!mouseIsDown)
                         Decrement_Week();
-
                     break;
-
                 case Keys.Space:
                     if (!mouseIsDown)
                         GotoCurrentWeek();
                     break;
+                case Keys.F1:
+                    if (!mouseIsDown)
+                        MessageBox.Show("Voici un merveilleux message d'aide!\n" +
+                                        "bla bla\n" +
+                                        "fwfwfwfwwfw");
+                    break;
+                //case Keys.:
+                //    if (!mouseIsDown)
+                //        MessageBox.Show("Voici un merveilleux message d'aide!\n" +
+                //                        "bla bla\n" +
+                //                        "fwfwfwfwwfw");
+                //    break;
             }
             bool result = base.ProcessCmdKey(ref msg, keyData);
             PN_Scroll.Focus();
@@ -767,9 +777,6 @@ namespace Compact_Agenda
 
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
-            //ZS_ZoomMaster.Refresh();
-            //ZS_ZoomMaster.Visible = true;
-
                 Point zoom = new Point(0, Cursor.Position.Y);
                 ZS_ZoomMaster.Location = zoom;
         }
@@ -777,9 +784,7 @@ namespace Compact_Agenda
 
         private void PN_Hours_MouseLeave(object sender, EventArgs e)
         {
-            ZS_ZoomMaster.Location = new Point(PN_Hours.Height,PN_Hours.Width);
-            //ZS_ZoomMaster.Visible = false;
-            //ZS_ZoomMaster.Refresh();
+
         }
 
         private void CMI_CouleurFond_Click(object sender, EventArgs e)
@@ -888,8 +893,8 @@ namespace Compact_Agenda
 
                 if (PN_Content.Height >= (PN_Frame.Height))
                 {
-                    PN_Content.Height -= 225;
-                    PN_Hours.Height -= 225;
+                    PN_Content.Height -= 200;
+                    PN_Hours.Height -= 200;
                     PN_Content.Refresh();
                     PN_Hours.Refresh();
                 }
@@ -898,8 +903,8 @@ namespace Compact_Agenda
             {
                 if (PN_Content.Height < PN_Frame.Height * 12)
                 {
-                    PN_Content.Height += 225;
-                    PN_Hours.Height += 225;
+                    PN_Content.Height += 200;
+                    PN_Hours.Height += 200;
                     PN_Content.Refresh();
                     PN_Hours.Refresh();
                 }
