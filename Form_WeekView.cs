@@ -776,13 +776,15 @@ namespace Compact_Agenda
         {
             //ZS_ZoomMaster.Refresh();
             //ZS_ZoomMaster.Visible = true;
+
                 Point zoom = new Point(0, Cursor.Position.Y);
-                zoomSlider1.Location = zoom;
+                ZS_ZoomMaster.Location = zoom;
         }
 
 
         private void PN_Hours_MouseLeave(object sender, EventArgs e)
         {
+            ZS_ZoomMaster.Location = new Point(PN_Hours.Height,PN_Hours.Width);
             //ZS_ZoomMaster.Visible = false;
             //ZS_ZoomMaster.Refresh();
         }
@@ -888,28 +890,28 @@ namespace Compact_Agenda
 
         private void ZS_ZoomMaster_ValueChanged(object sender, EventArgs e)
         {
-            if (valeurZoom > zoomSlider1.Value)
+            if (valeurZoom > ZS_ZoomMaster.Value)
             {
 
                 if (PN_Content.Height >= (PN_Frame.Height))
                 {
-                    PN_Content.Height -= 250;
-                    PN_Hours.Height -= 250;
+                    PN_Content.Height -= 225;
+                    PN_Hours.Height -= 225;
                     PN_Content.Refresh();
                     PN_Hours.Refresh();
                 }
             }
-            else if (valeurZoom < zoomSlider1.Value)
+            else if (valeurZoom < ZS_ZoomMaster.Value)
             {
                 if (PN_Content.Height < PN_Frame.Height * 12)
                 {
-                    PN_Content.Height += 250;
-                    PN_Hours.Height += 250;
+                    PN_Content.Height += 225;
+                    PN_Hours.Height += 225;
                     PN_Content.Refresh();
                     PN_Hours.Refresh();
                 }
             }
-            valeurZoom = zoomSlider1.Value;
+            valeurZoom = ZS_ZoomMaster.Value;
         }
 
         private void afficherSemainCouranteToolStripMenuItem_Click(object sender, EventArgs e)

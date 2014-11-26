@@ -58,17 +58,16 @@
             this.couleurDeLaPoliceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
+            this.ZS_ZoomMaster = new ZoomSliderProject.ZoomSlider();
             this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
             this.PB_Fleche = new System.Windows.Forms.PictureBox();
             this.PN_DaysHeader = new Compact_Agenda.DoubleBufferPanel();
-            this.ZS_ZoomMaster = new ZoomSliderProject.ZoomSlider();
             this.PN_Frame.SuspendLayout();
             this.CM_Event.SuspendLayout();
             this.CM_EnteteJour.SuspendLayout();
             this.CM_SemaineCourante.SuspendLayout();
             this.CM_EnteteHeures.SuspendLayout();
             this.PN_Scroll.SuspendLayout();
-            this.PN_Content.SuspendLayout();
             this.PN_Hours.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Fleche)).BeginInit();
             this.SuspendLayout();
@@ -314,7 +313,6 @@
             // 
             // PN_Content
             // 
-            this.PN_Content.Controls.Add(this.ZS_ZoomMaster);
             this.PN_Content.Location = new System.Drawing.Point(54, 0);
             this.PN_Content.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.PN_Content.Name = "PN_Content";
@@ -329,8 +327,22 @@
             this.PN_Content.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseUp);
             this.PN_Content.Resize += new System.EventHandler(this.PN_Content_Resize);
             // 
+            // ZS_ZoomMaster
+            // 
+            this.ZS_ZoomMaster.BackColor = System.Drawing.Color.White;
+            this.ZS_ZoomMaster.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ZS_ZoomMaster.BackgroundImage")));
+            this.ZS_ZoomMaster.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ZS_ZoomMaster.Location = new System.Drawing.Point(28, 0);
+            this.ZS_ZoomMaster.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ZS_ZoomMaster.Name = "ZS_ZoomMaster";
+            this.ZS_ZoomMaster.Size = new System.Drawing.Size(26, 231);
+            this.ZS_ZoomMaster.TabIndex = 2;
+            this.ZS_ZoomMaster.Value = 50;
+            this.ZS_ZoomMaster.ValueChanged += new ZoomSliderProject.ZoomSlider.ValueChangedHandler(this.ZS_ZoomMaster_ValueChanged);
+            // 
             // PN_Hours
             // 
+            this.PN_Hours.Controls.Add(this.ZS_ZoomMaster);
             this.PN_Hours.Controls.Add(this.PB_Fleche);
             this.PN_Hours.Location = new System.Drawing.Point(0, 0);
             this.PN_Hours.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -366,20 +378,6 @@
             this.PN_DaysHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_DaysHeader_Paint);
             this.PN_DaysHeader.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_DaysHeader_MouseClick);
             // 
-            // ZS_ZoomMaster
-            // 
-            this.ZS_ZoomMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZS_ZoomMaster.BackColor = System.Drawing.Color.White;
-            this.ZS_ZoomMaster.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ZS_ZoomMaster.BackgroundImage")));
-            this.ZS_ZoomMaster.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ZS_ZoomMaster.Location = new System.Drawing.Point(10, 0);
-            this.ZS_ZoomMaster.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ZS_ZoomMaster.Name = "ZS_ZoomMaster";
-            this.ZS_ZoomMaster.Size = new System.Drawing.Size(26, 231);
-            this.ZS_ZoomMaster.TabIndex = 2;
-            this.ZS_ZoomMaster.Value = 0;
-            this.ZS_ZoomMaster.ValueChanged += new ZoomSliderProject.ZoomSlider.ValueChangedHandler(this.ZS_ZoomMaster_ValueChanged);
-            // 
             // Form_WeekView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -401,7 +399,6 @@
             this.CM_SemaineCourante.ResumeLayout(false);
             this.CM_EnteteHeures.ResumeLayout(false);
             this.PN_Scroll.ResumeLayout(false);
-            this.PN_Content.ResumeLayout(false);
             this.PN_Hours.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PB_Fleche)).EndInit();
             this.ResumeLayout(false);
