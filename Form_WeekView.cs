@@ -636,30 +636,23 @@ namespace Compact_Agenda
 
         private void CMI_Reporter_Click(object sender, EventArgs e)
         {
-            //evenement.TargetEvent.Starting = new DateTime(
-            //                                              evenement.TargetEvent.Starting.Year,
-            //                                              evenement.TargetEvent.Starting.Month,
-            //                                              evenement.TargetEvent.Starting.Day + 1,
-            //                                              evenement.TargetEvent.Starting.Hour,
-            //                                              evenement.TargetEvent.Starting.Minute,
-            //                                              0);
+            TableEvents tableevents = new TableEvents(ConnexionString);
+            tableevents.DeleteEvent(evenement.TargetEvent);
             evenement.TargetEvent.Starting = evenement.TargetEvent.Starting.AddDays(7);
             evenement.TargetEvent.Ending = evenement.TargetEvent.Ending.AddDays(7);
-            //AjustCurrentWeek();
+            tableevents.AddEvent(evenement.TargetEvent);
             GetWeekEvents();
-            //PN_Content.Refresh();
+            PN_Content.Refresh();
         }
         private void CMI_Dupliquer_Click(object sender, EventArgs e)
         {
-            Event duplicata = new Event();
-            duplicata = evenement.TargetEvent.Klone();
-            evenement.Add(duplicata);
-            duplicata.Starting.AddHours(1);
-            duplicata.Ending.AddHours(1);
+            TableEvents tableevents = new TableEvents(ConnexionString); // alex was here
+            Event duplicata = evenement.TargetEvent; 
 
-            AjustCurrentWeek();
-            //Event newEvent = new Event(evenement.TargetEvent.Id, evenement.TargetEvent.Title, evenement.TargetEvent.Description, evenement.TargetEvent.Starting.AddDays(1), evenement.TargetEvent.Ending.AddDays(1), evenement.TargetEvent.Category);
-            //evenement.Add(newEvent);
+            duplicata.Starting = duplicata.Starting.AddHours(1);
+            duplicata.Ending = duplicata.Ending.AddHours(1);
+            tableevents.AddEvent(duplicata); 
+
             GetWeekEvents();
             PN_Content.Refresh();
         }
