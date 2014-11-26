@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace PasswordKeeper
+namespace Compact_Agenda
 {
  
     partial class DLG_HLSColorPicker

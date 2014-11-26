@@ -552,15 +552,21 @@ namespace Compact_Agenda
         }
         private void PN_Content_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
+            KeyPreview = true;
             switch (e.KeyCode)
             {
                 case Keys.Down:
+                    break;
                 case Keys.Right:
                     //action
                     break;
                 case Keys.Up:
+                    break;
                 case Keys.Left:
                     //action
+                    break;
+                    case Keys.Control:
+                case Keys.Q:
                     break;
             }
         }
@@ -620,18 +626,21 @@ namespace Compact_Agenda
                             GotoCurrentWeek();
                     }
                     break;
-                case Keys.ControlKey & Keys.Q:
-                    {
-                        if (!mouseIsDown)
-                            GotoCurrentWeek();
-                    }
-                    break;
                 case Keys.F1:
                     {
-                        MessageBox.Show("A-ttroce\n" +
-                                        "I-llusion\n" +
-                                        "D-éfaite\n" +
-                                        "E-ntorse");
+                        MessageBox.Show("Bonjour cher utilisateur!\n" +
+                                        "Vous avez fait un excellent choix!\n" +
+                                        "\n" +
+                                        "Voici les touches que vous pouvez appuyer:\n" +
+                                        "F1: Menu d'aide\n" +
+                                        "Espace: Présente la semaine courante\n" +
+                                        "Flèche droite: Présente la semaine suivante\n" +
+                                        "Flèche gauche: Présente la semaine précédente\n" +
+                                        "Flèche haut: Présente le mois suivant\n" +
+                                        "Flèche bas: Présente le mois précédent\n" +
+                                        "+: Zoom positif vertical\n" +
+                                        "-: Zoom négatif vertical\n" +
+                                        "Ctrl+Q: Quitter le programme");
                     }
                     break;
             }                    
@@ -950,7 +959,14 @@ namespace Compact_Agenda
 
         private void Form_WeekView_KeyPress(object sender, KeyPressEventArgs e)
         {
+        }
 
+        private void Form_WeekView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Q && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+            }
         }
     }
 }

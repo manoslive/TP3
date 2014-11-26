@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PasswordKeeper
+namespace Compact_Agenda
 {
 
     public partial class DLG_HLSColorPicker : Form
