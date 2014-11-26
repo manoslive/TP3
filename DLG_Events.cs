@@ -167,7 +167,7 @@ namespace Compact_Agenda
             if (MessageBox.Show("Voulez vous vraiment effacer cet événement ?", "Effacer", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                delete = true;           
+                delete = true;
             }
             this.Close();
         }
@@ -230,150 +230,7 @@ namespace Compact_Agenda
                 else
                     LB_Description.ForeColor = Color.Red;
         }
-        private void NUD_OnChange()
-        {
-            if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
-            {
-                if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <= 30)
-                {
-                    NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
-                }
-                if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <= 30)
-                {
-                    NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
-                }
-            }
-            else if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
-            {
-                if (NUD_DebutMinute.Value > 30)
-                {
-                    NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
-                }
-                else
-                {
-                    NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
-                }
-                if (NUD_FinMinute.Value < 30)
-                {
-                    NUD_DebutHeure.Value--;
-                    NUD_DebutMinute.Value = NUD_FinMinute.Value + 30;
-                }
-                else
-                {
-                    NUD_DebutMinute.Value = NUD_FinMinute.Value - 30;
-                }
-            }
-        }
-        private void NUD_DebutHeure_ValueChanged(object sender, EventArgs e)
-        {
-            if (!blockUpdate)
-            {
-                if (NUD_DebutHeure.Value > NUD_FinHeure.Value)
-                {
-                    NUD_FinHeure.Value = NUD_DebutHeure.Value;
-                }
-                NUD_OnChange();
-                Event.Starting = new DateTime(DTP_Date.Value.Year,
-                                                 DTP_Date.Value.Month,
-                                                 DTP_Date.Value.Day,
-                                                 Convert.ToInt32(NUD_DebutHeure.Value),
-                                                 Convert.ToInt32(NUD_DebutMinute.Value),
-                                                 0);
-            }
-        }
 
-        private void NUD_DebutMinute_ValueChanged(object sender, EventArgs e)
-        {
-            if (!blockUpdate)
-            {
-                if (NUD_DebutMinute.Value <= -5)
-                {
-                    NUD_DebutMinute.Value = 55;
-                    NUD_DebutHeure.Value--;
-                }
-                else if (NUD_DebutMinute.Value >= 60)
-                {
-                    if (NUD_DebutHeure.Value == 23)
-                        NUD_DebutMinute.Value = 55;
-                    else
-                    {
-                        NUD_DebutMinute.Value = 0;
-                        NUD_DebutHeure.Value++;
-                    }
-                }
-                if ((NUD_FinHeure.Value - 1) == NUD_DebutHeure.Value)
-                {
-                    if (NUD_DebutMinute.Value > 30 && NUD_FinMinute.Value <= 30)
-                    {
-                        NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
-                    }
-                }
-                else if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
-                {
-                    if (NUD_DebutMinute.Value > 30)
-                    {
-                        NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
-                    }
-                    else
-                    {
-                        NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
-                    }
-                }
-                Event.Starting = new DateTime(DTP_Date.Value.Year,
-                                                 DTP_Date.Value.Month,
-                                                 DTP_Date.Value.Day,
-                                                 Convert.ToInt32(NUD_DebutHeure.Value),
-                                                 Convert.ToInt32(NUD_DebutMinute.Value),
-                                                 0);
-            }
-        }
-
-        private void NUD_FinHeure_ValueChanged(object sender, EventArgs e)
-        {
-            if (!blockUpdate)
-            {
-                if (NUD_FinHeure.Value < NUD_DebutHeure.Value)
-                {
-                    NUD_DebutHeure.Value = NUD_FinHeure.Value;
-                }
-                NUD_OnChange();
-                Event.Ending = new DateTime(DTP_Date.Value.Year,
-                                                 DTP_Date.Value.Month,
-                                                 DTP_Date.Value.Day,
-                                                 Convert.ToInt32(NUD_FinHeure.Value),
-                                                 Convert.ToInt32(NUD_FinMinute.Value),
-                                                 0);
-            }
-        }
-
-        private void NUD_FinMinute_ValueChanged(object sender, EventArgs e)
-        {
-            if (!blockUpdate)
-            {
-                if (NUD_FinMinute.Value == -5)
-                {
-                    NUD_FinMinute.Value = 55;
-                    NUD_FinHeure.Value--;
-                }
-                else if (NUD_FinMinute.Value == 60)
-                {
-                    if (NUD_FinHeure.Value == 23)
-                        NUD_FinMinute.Value = 55;
-                    else
-                    {
-                        NUD_FinMinute.Value = 0;
-                        NUD_FinHeure.Value++;
-                    }
-                }
-                NUD_OnChange();
-                Event.Ending = new DateTime(DTP_Date.Value.Year,
-                                                 DTP_Date.Value.Month,
-                                                 DTP_Date.Value.Day,
-                                                 Convert.ToInt32(NUD_FinHeure.Value),
-                                                 Convert.ToInt32(NUD_FinMinute.Value),
-                                                 0);
-            }
-        }
 
         private void PB_General_MouseHover(object sender, EventArgs e)
         {
@@ -488,6 +345,117 @@ namespace Compact_Agenda
         {
             Event.eventColor = Properties.Settings.Default.colorTravail;
             Event.Category = 5;
+        }
+
+        private void NUD_DebutMinute_MouseUp(object sender, MouseEventArgs e)
+        {
+            NUD_OnChange();
+            if (NUD_DebutMinute.Value > 55)
+            {
+                NUD_DebutHeure.Value++;
+                NUD_DebutMinute.Value = 0;
+            }
+            else if (NUD_DebutMinute.Value < 0)
+            {
+                NUD_DebutHeure.Value--;
+                NUD_DebutMinute.Value = 0;
+            }
+            if (!blockUpdate)
+            {
+                Event.Starting = new DateTime(DTP_Date.Value.Year,
+                                                 DTP_Date.Value.Month,
+                                                 DTP_Date.Value.Day,
+                                                 Convert.ToInt32(NUD_DebutHeure.Value),
+                                                 Convert.ToInt32(NUD_DebutMinute.Value),
+                                                 0);
+            }
+        }
+
+        private void NUD_FinMinute_MouseUp(object sender, MouseEventArgs e)
+        {
+            NUD_OnChange();
+            if (NUD_FinMinute.Value > 55)
+            {
+                NUD_FinHeure.Value++;
+                NUD_FinMinute.Value = 0;
+            }
+            else if (NUD_FinMinute.Value < 0)
+            {
+                NUD_FinMinute.Value = 0;
+            }
+            if (!blockUpdate)
+            {
+                Event.Ending = new DateTime(DTP_Date.Value.Year,
+                                                 DTP_Date.Value.Month,
+                                                 DTP_Date.Value.Day,
+                                                 Convert.ToInt32(NUD_FinHeure.Value),
+                                                 Convert.ToInt32(NUD_FinMinute.Value),
+                                                 0);
+            }
+        }
+
+        private void NUD_DebutHeure_MouseUp(object sender, MouseEventArgs e)
+        {
+            NUD_OnChange();
+            if (!blockUpdate)
+            {
+                Event.Starting = new DateTime(DTP_Date.Value.Year,
+                                                 DTP_Date.Value.Month,
+                                                 DTP_Date.Value.Day,
+                                                 Convert.ToInt32(NUD_DebutHeure.Value),
+                                                 Convert.ToInt32(NUD_DebutMinute.Value),
+                                                 0);
+            }
+        }
+
+        private void NUD_FinHeure_MouseUp(object sender, MouseEventArgs e)
+        {
+            NUD_OnChange();
+            if (!blockUpdate)
+            {
+                Event.Ending = new DateTime(DTP_Date.Value.Year,
+                                                 DTP_Date.Value.Month,
+                                                 DTP_Date.Value.Day,
+                                                 Convert.ToInt32(NUD_FinHeure.Value),
+                                                 Convert.ToInt32(NUD_FinMinute.Value),
+                                                 0);
+            }
+        }
+        private void NUD_OnChange()
+        {
+            if (NUD_FinHeure.Value >= 23 && NUD_DebutHeure.Value >= 23)
+            {
+                if (NUD_FinMinute.Value > 55)
+                    NUD_FinMinute.Value = 55;
+                if (NUD_DebutMinute.Value > 25)
+                    NUD_DebutMinute.Value = 25;
+
+                NUD_FinHeure.Value = 23;
+                NUD_DebutHeure.Value = 23;
+            }
+            if (NUD_DebutHeure.Value > NUD_FinHeure.Value)
+            {
+                NUD_FinHeure.Value = NUD_DebutHeure.Value;
+            }
+            if (NUD_DebutHeure.Value == NUD_FinHeure.Value)
+            {
+                if (NUD_DebutMinute.Value > (NUD_FinMinute.Value - 30))
+                {
+                    NUD_FinMinute.Value = NUD_DebutMinute.Value + 30;
+                    if (NUD_FinMinute.Value > 55)
+                    {
+                        NUD_FinMinute.Value = 0;
+                        NUD_FinHeure.Value++;
+                    }
+                }
+            }
+            else if (NUD_FinHeure.Value == (NUD_DebutHeure.Value + 1))
+            {
+                if (NUD_FinMinute.Value <= 30 && NUD_DebutMinute.Value >= 30)
+                {
+                    NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
+                }
+            }
         }
     }
 }
