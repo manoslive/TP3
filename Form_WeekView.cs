@@ -63,6 +63,7 @@ namespace Compact_Agenda
             this.PN_Content.BackColor = Properties.Settings.Default.colorFondContent;
             this.PN_DaysHeader.BackColor = Properties.Settings.Default.colorPN_Days;
             this.PN_Hours.BackColor = Properties.Settings.Default.colorPN_Hours;
+            this.PN_Frame.BackColor = Properties.Settings.Default.colorPN_Frame;
         }
 
         private void PN_Scroll_MouseEnter(Object sender, EventArgs e)
@@ -833,9 +834,11 @@ namespace Compact_Agenda
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.colorPN_Days = dlg.Color;
+                Properties.Settings.Default.colorPN_Frame = dlg.Color;
                 Properties.Settings.Default.Save();
             }
             PN_DaysHeader.BackColor = Properties.Settings.Default.colorPN_Days;
+            PN_Frame.BackColor = Properties.Settings.Default.colorPN_Frame;
         }
 
         private void couleurDeFondToolStripMenuItem1_Click(object sender, EventArgs e)

@@ -350,16 +350,7 @@ namespace Compact_Agenda
         private void NUD_DebutMinute_MouseUp(object sender, MouseEventArgs e)
         {
             NUD_OnChange();
-            if (NUD_DebutMinute.Value > 55)
-            {
-                NUD_DebutHeure.Value++;
-                NUD_DebutMinute.Value = 0;
-            }
-            else if (NUD_DebutMinute.Value < 0)
-            {
-                NUD_DebutHeure.Value--;
-                NUD_DebutMinute.Value = 0;
-            }
+
             if (!blockUpdate)
             {
                 Event.Starting = new DateTime(DTP_Date.Value.Year,
@@ -374,15 +365,6 @@ namespace Compact_Agenda
         private void NUD_FinMinute_MouseUp(object sender, MouseEventArgs e)
         {
             NUD_OnChange();
-            if (NUD_FinMinute.Value > 55)
-            {
-                NUD_FinHeure.Value++;
-                NUD_FinMinute.Value = 0;
-            }
-            else if (NUD_FinMinute.Value < 0)
-            {
-                NUD_FinMinute.Value = 0;
-            }
             if (!blockUpdate)
             {
                 Event.Ending = new DateTime(DTP_Date.Value.Year,
@@ -425,13 +407,12 @@ namespace Compact_Agenda
         {
             if (NUD_FinHeure.Value >= 23 && NUD_DebutHeure.Value >= 23)
             {
+                NUD_FinHeure.Value = 23;
+                NUD_DebutHeure.Value = 23;
                 if (NUD_FinMinute.Value > 55)
                     NUD_FinMinute.Value = 55;
                 if (NUD_DebutMinute.Value > 25)
                     NUD_DebutMinute.Value = 25;
-
-                NUD_FinHeure.Value = 23;
-                NUD_DebutHeure.Value = 23;
             }
             if (NUD_DebutHeure.Value > NUD_FinHeure.Value)
             {
@@ -455,6 +436,25 @@ namespace Compact_Agenda
                 {
                     NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
                 }
+            }
+            if (NUD_DebutMinute.Value > 55)
+            {
+                NUD_DebutHeure.Value++;
+                NUD_DebutMinute.Value = 0;
+            }
+            else if (NUD_DebutMinute.Value < 0)
+            {
+                NUD_DebutHeure.Value--;
+                NUD_DebutMinute.Value = 55;
+            }
+            if (NUD_FinMinute.Value > 55)
+            {
+                NUD_FinHeure.Value++;
+                NUD_FinMinute.Value = 0;
+            }
+            else if (NUD_FinMinute.Value < 0)
+            {
+                NUD_FinMinute.Value = 0;
             }
         }
     }

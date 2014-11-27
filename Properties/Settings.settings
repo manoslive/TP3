@@ -83,5 +83,8 @@
     <Setting Name="colorPN_Days_Today" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Silver</Value>
     </Setting>
+    <Setting Name="colorPN_Frame" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

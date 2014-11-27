@@ -344,5 +344,17 @@ namespace Compact_Agenda.Properties {
                 this["colorPN_Days_Today"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color colorPN_Frame {
+            get {
+                return ((global::System.Drawing.Color)(this["colorPN_Frame"]));
+            }
+            set {
+                this["colorPN_Frame"] = value;
+            }
+        }
     }
 }

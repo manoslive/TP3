@@ -84,7 +84,7 @@
             this.PN_Frame.Controls.Add(this.PN_DaysHeader);
             this.PN_Frame.Location = new System.Drawing.Point(0, 0);
             this.PN_Frame.Name = "PN_Frame";
-            this.PN_Frame.Size = new System.Drawing.Size(737, 497);
+            this.PN_Frame.Size = new System.Drawing.Size(737, 452);
             this.PN_Frame.TabIndex = 4;
             this.PN_Frame.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Frame_Paint);
             // 
@@ -100,7 +100,7 @@
             this.PN_Scroll.Location = new System.Drawing.Point(3, 34);
             this.PN_Scroll.Margin = new System.Windows.Forms.Padding(0);
             this.PN_Scroll.Name = "PN_Scroll";
-            this.PN_Scroll.Size = new System.Drawing.Size(734, 445);
+            this.PN_Scroll.Size = new System.Drawing.Size(731, 395);
             this.PN_Scroll.TabIndex = 1;
             this.PN_Scroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.PN_Scroll_Scroll);
             this.PN_Scroll.Resize += new System.EventHandler(this.PN_Scroll_Resize);
@@ -380,7 +380,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 476);
+            this.ClientSize = new System.Drawing.Size(739, 431);
             this.Controls.Add(this.PN_Frame);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

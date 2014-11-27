@@ -356,11 +356,11 @@
             0});
             this.NUD_DebutMinute.Location = new System.Drawing.Point(133, 242);
             this.NUD_DebutMinute.Margin = new System.Windows.Forms.Padding(1);
-            this.NUD_DebutMinute.Maximum = new decimal(new int[] {
-            55,
+            this.NUD_DebutMinute.Minimum = new decimal(new int[] {
+            5,
             0,
             0,
-            0});
+            -2147483648});
             this.NUD_DebutMinute.Name = "NUD_DebutMinute";
             this.NUD_DebutMinute.Size = new System.Drawing.Size(39, 20);
             this.NUD_DebutMinute.TabIndex = 50;
@@ -389,11 +389,11 @@
             0});
             this.NUD_FinMinute.Location = new System.Drawing.Point(133, 268);
             this.NUD_FinMinute.Margin = new System.Windows.Forms.Padding(1);
-            this.NUD_FinMinute.Maximum = new decimal(new int[] {
-            55,
+            this.NUD_FinMinute.Minimum = new decimal(new int[] {
+            5,
             0,
             0,
-            0});
+            -2147483648});
             this.NUD_FinMinute.Name = "NUD_FinMinute";
             this.NUD_FinMinute.Size = new System.Drawing.Size(39, 20);
             this.NUD_FinMinute.TabIndex = 50;
