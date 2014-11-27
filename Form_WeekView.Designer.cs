@@ -390,6 +390,7 @@
             this.Text = "Agenda compacte...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_WeekView_FormClosing);
             this.Load += new System.EventHandler(this.Form_WeekView_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_WeekView_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form_WeekView_KeyPress);
             this.PN_Frame.ResumeLayout(false);
             this.PN_Scroll.ResumeLayout(false);

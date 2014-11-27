@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace PasswordKeeper
+namespace Compact_Agenda
 {
     ///////////////////////////////////////////////////////////////////////////////////////
     // C L A S S   H L S C o l o r
