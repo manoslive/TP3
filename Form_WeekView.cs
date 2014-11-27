@@ -68,6 +68,7 @@ namespace Compact_Agenda
 
         private void PN_Scroll_MouseEnter(Object sender, EventArgs e)
         {
+            ZS_ZoomMaster.Visible = false;
             // pour s'assurer que le mousewheel event sera intercepté
 
             PN_Scroll.Focus();
@@ -817,7 +818,8 @@ namespace Compact_Agenda
 
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
-            Point zoom = new Point(0, Cursor.Position.Y);
+            ZS_ZoomMaster.Visible = true;
+            Point zoom = new Point(0, Cursor.Position.Y-100);
             ZS_ZoomMaster.Location = zoom;
         }
 
@@ -931,11 +933,10 @@ namespace Compact_Agenda
         {
             if (valeurZoom > ZS_ZoomMaster.Value)
             {
-
                 if (PN_Content.Height >= (PN_Frame.Height))
                 {
-                    PN_Content.Height -= 200;
-                    PN_Hours.Height -= 200;
+                    PN_Content.Height -= 100;
+                    PN_Hours.Height -= 100;
                     PN_Content.Refresh();
                     PN_Hours.Refresh();
                 }
@@ -944,8 +945,8 @@ namespace Compact_Agenda
             {
                 if (PN_Content.Height < PN_Frame.Height * 12)
                 {
-                    PN_Content.Height += 200;
-                    PN_Hours.Height += 200;
+                    PN_Content.Height += 100;
+                    PN_Hours.Height += 100;
                     PN_Content.Refresh();
                     PN_Hours.Refresh();
                 }
@@ -970,6 +971,11 @@ namespace Compact_Agenda
             {
                 this.Close();
             }
+        }
+
+        private void ZS_ZoomMaster_MouseEnter(object sender, EventArgs e)
+        {
+
         }
     }
 }

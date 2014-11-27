@@ -31,14 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_WeekView));
             this.PN_Frame = new System.Windows.Forms.Panel();
-            this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
-            this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
-            this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
-            this.ZS_ZoomMaster = new ZoomSliderProject.ZoomSlider();
-            this.PB_Fleche = new System.Windows.Forms.PictureBox();
             this.FBTN_DecrementWeek = new FlashButton.FlashButton();
             this.FBTN_IncrementWeek = new FlashButton.FlashButton();
-            this.PN_DaysHeader = new Compact_Agenda.DoubleBufferPanel();
             this.CM_Event = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CMI_Modifier = new System.Windows.Forms.ToolStripMenuItem();
             this.CMI_Effacer = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,14 +56,20 @@
             this.couleurDeFondToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.policeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.couleurDeLaPoliceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.PN_Scroll = new Compact_Agenda.DoubleBufferPanel();
+            this.PN_Content = new Compact_Agenda.DoubleBufferPanel();
+            this.PN_Hours = new Compact_Agenda.DoubleBufferPanel();
+            this.ZS_ZoomMaster = new ZoomSliderProject.ZoomSlider();
+            this.PB_Fleche = new System.Windows.Forms.PictureBox();
+            this.PN_DaysHeader = new Compact_Agenda.DoubleBufferPanel();
             this.PN_Frame.SuspendLayout();
-            this.PN_Scroll.SuspendLayout();
-            this.PN_Hours.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_Fleche)).BeginInit();
             this.CM_Event.SuspendLayout();
             this.CM_EnteteJour.SuspendLayout();
             this.CM_SemaineCourante.SuspendLayout();
             this.CM_EnteteHeures.SuspendLayout();
+            this.PN_Scroll.SuspendLayout();
+            this.PN_Hours.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Fleche)).BeginInit();
             this.SuspendLayout();
             // 
             // PN_Frame
@@ -87,78 +87,6 @@
             this.PN_Frame.Size = new System.Drawing.Size(737, 452);
             this.PN_Frame.TabIndex = 4;
             this.PN_Frame.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Frame_Paint);
-            // 
-            // PN_Scroll
-            // 
-            this.PN_Scroll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PN_Scroll.AutoScroll = true;
-            this.PN_Scroll.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.PN_Scroll.Controls.Add(this.PN_Content);
-            this.PN_Scroll.Controls.Add(this.PN_Hours);
-            this.PN_Scroll.Location = new System.Drawing.Point(3, 34);
-            this.PN_Scroll.Margin = new System.Windows.Forms.Padding(0);
-            this.PN_Scroll.Name = "PN_Scroll";
-            this.PN_Scroll.Size = new System.Drawing.Size(731, 395);
-            this.PN_Scroll.TabIndex = 1;
-            this.PN_Scroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.PN_Scroll_Scroll);
-            this.PN_Scroll.Resize += new System.EventHandler(this.PN_Scroll_Resize);
-            // 
-            // PN_Content
-            // 
-            this.PN_Content.Location = new System.Drawing.Point(36, 0);
-            this.PN_Content.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.PN_Content.Name = "PN_Content";
-            this.PN_Content.Size = new System.Drawing.Size(628, 452);
-            this.PN_Content.TabIndex = 0;
-            this.PN_Content.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Content_Paint);
-            this.PN_Content.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseClick);
-            this.PN_Content.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseDoubleClick);
-            this.PN_Content.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseDown);
-            this.PN_Content.MouseEnter += new System.EventHandler(this.PN_Scroll_MouseEnter);
-            this.PN_Content.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseMove);
-            this.PN_Content.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseUp);
-            this.PN_Content.Resize += new System.EventHandler(this.PN_Content_Resize);
-            // 
-            // PN_Hours
-            // 
-            this.PN_Hours.Controls.Add(this.ZS_ZoomMaster);
-            this.PN_Hours.Controls.Add(this.PB_Fleche);
-            this.PN_Hours.Location = new System.Drawing.Point(0, 0);
-            this.PN_Hours.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.PN_Hours.Name = "PN_Hours";
-            this.PN_Hours.Size = new System.Drawing.Size(36, 518);
-            this.PN_Hours.TabIndex = 1;
-            this.PN_Hours.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Hours_Paint);
-            this.PN_Hours.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_Hours_MouseClick);
-            this.PN_Hours.MouseEnter += new System.EventHandler(this.PN_Hours_MouseEnter);
-            this.PN_Hours.MouseLeave += new System.EventHandler(this.PN_Hours_MouseLeave);
-            // 
-            // ZS_ZoomMaster
-            // 
-            this.ZS_ZoomMaster.BackColor = System.Drawing.Color.White;
-            this.ZS_ZoomMaster.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ZS_ZoomMaster.BackgroundImage")));
-            this.ZS_ZoomMaster.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ZS_ZoomMaster.Location = new System.Drawing.Point(19, 0);
-            this.ZS_ZoomMaster.Name = "ZS_ZoomMaster";
-            this.ZS_ZoomMaster.Size = new System.Drawing.Size(17, 150);
-            this.ZS_ZoomMaster.TabIndex = 2;
-            this.ZS_ZoomMaster.Value = 50;
-            this.ZS_ZoomMaster.ValueChanged += new ZoomSliderProject.ZoomSlider.ValueChangedHandler(this.ZS_ZoomMaster_ValueChanged);
-            // 
-            // PB_Fleche
-            // 
-            this.PB_Fleche.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Fleche.BackgroundImage = global::Compact_Agenda.Properties.Resources.Arrow_Time1;
-            this.PB_Fleche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PB_Fleche.Location = new System.Drawing.Point(3, 127);
-            this.PB_Fleche.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.PB_Fleche.Name = "PB_Fleche";
-            this.PB_Fleche.Size = new System.Drawing.Size(29, 25);
-            this.PB_Fleche.TabIndex = 0;
-            this.PB_Fleche.TabStop = false;
-            this.PB_Fleche.Visible = false;
             // 
             // FBTN_DecrementWeek
             // 
@@ -190,17 +118,6 @@
             this.FBTN_IncrementWeek.Size = new System.Drawing.Size(32, 32);
             this.FBTN_IncrementWeek.TabIndex = 3;
             this.FBTN_IncrementWeek.Click += new System.EventHandler(this.FBTN_IncrementWeek_Click);
-            // 
-            // PN_DaysHeader
-            // 
-            this.PN_DaysHeader.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.PN_DaysHeader.Location = new System.Drawing.Point(39, 2);
-            this.PN_DaysHeader.Margin = new System.Windows.Forms.Padding(0);
-            this.PN_DaysHeader.Name = "PN_DaysHeader";
-            this.PN_DaysHeader.Size = new System.Drawing.Size(628, 32);
-            this.PN_DaysHeader.TabIndex = 0;
-            this.PN_DaysHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_DaysHeader_Paint);
-            this.PN_DaysHeader.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_DaysHeader_MouseClick);
             // 
             // CM_Event
             // 
@@ -376,6 +293,91 @@
             this.couleurDeLaPoliceToolStripMenuItem1.Text = "Couleur de la police...";
             this.couleurDeLaPoliceToolStripMenuItem1.Click += new System.EventHandler(this.couleurDeLaPoliceToolStripMenuItem1_Click);
             // 
+            // PN_Scroll
+            // 
+            this.PN_Scroll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PN_Scroll.AutoScroll = true;
+            this.PN_Scroll.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PN_Scroll.Controls.Add(this.PN_Content);
+            this.PN_Scroll.Controls.Add(this.PN_Hours);
+            this.PN_Scroll.Location = new System.Drawing.Point(3, 34);
+            this.PN_Scroll.Margin = new System.Windows.Forms.Padding(0);
+            this.PN_Scroll.Name = "PN_Scroll";
+            this.PN_Scroll.Size = new System.Drawing.Size(731, 395);
+            this.PN_Scroll.TabIndex = 1;
+            this.PN_Scroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.PN_Scroll_Scroll);
+            this.PN_Scroll.Resize += new System.EventHandler(this.PN_Scroll_Resize);
+            // 
+            // PN_Content
+            // 
+            this.PN_Content.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PN_Content.Location = new System.Drawing.Point(36, 0);
+            this.PN_Content.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PN_Content.Name = "PN_Content";
+            this.PN_Content.Size = new System.Drawing.Size(628, 452);
+            this.PN_Content.TabIndex = 0;
+            this.PN_Content.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Content_Paint);
+            this.PN_Content.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseClick);
+            this.PN_Content.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseDoubleClick);
+            this.PN_Content.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseDown);
+            this.PN_Content.MouseEnter += new System.EventHandler(this.PN_Scroll_MouseEnter);
+            this.PN_Content.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseMove);
+            this.PN_Content.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PN_Content_MouseUp);
+            this.PN_Content.Resize += new System.EventHandler(this.PN_Content_Resize);
+            // 
+            // PN_Hours
+            // 
+            this.PN_Hours.Controls.Add(this.ZS_ZoomMaster);
+            this.PN_Hours.Controls.Add(this.PB_Fleche);
+            this.PN_Hours.Location = new System.Drawing.Point(0, 0);
+            this.PN_Hours.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PN_Hours.Name = "PN_Hours";
+            this.PN_Hours.Size = new System.Drawing.Size(36, 509);
+            this.PN_Hours.TabIndex = 1;
+            this.PN_Hours.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Hours_Paint);
+            this.PN_Hours.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_Hours_MouseClick);
+            this.PN_Hours.MouseEnter += new System.EventHandler(this.PN_Hours_MouseEnter);
+            this.PN_Hours.MouseLeave += new System.EventHandler(this.PN_Hours_MouseLeave);
+            // 
+            // ZS_ZoomMaster
+            // 
+            this.ZS_ZoomMaster.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ZS_ZoomMaster.BackColor = System.Drawing.Color.White;
+            this.ZS_ZoomMaster.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ZS_ZoomMaster.BackgroundImage")));
+            this.ZS_ZoomMaster.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ZS_ZoomMaster.Location = new System.Drawing.Point(19, 0);
+            this.ZS_ZoomMaster.Name = "ZS_ZoomMaster";
+            this.ZS_ZoomMaster.Size = new System.Drawing.Size(17, 150);
+            this.ZS_ZoomMaster.TabIndex = 2;
+            this.ZS_ZoomMaster.Value = 50;
+            this.ZS_ZoomMaster.ValueChanged += new ZoomSliderProject.ZoomSlider.ValueChangedHandler(this.ZS_ZoomMaster_ValueChanged);
+            // 
+            // PB_Fleche
+            // 
+            this.PB_Fleche.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Fleche.BackgroundImage = global::Compact_Agenda.Properties.Resources.Arrow_Time1;
+            this.PB_Fleche.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PB_Fleche.Location = new System.Drawing.Point(3, 127);
+            this.PB_Fleche.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PB_Fleche.Name = "PB_Fleche";
+            this.PB_Fleche.Size = new System.Drawing.Size(29, 25);
+            this.PB_Fleche.TabIndex = 0;
+            this.PB_Fleche.TabStop = false;
+            this.PB_Fleche.Visible = false;
+            // 
+            // PN_DaysHeader
+            // 
+            this.PN_DaysHeader.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.PN_DaysHeader.Location = new System.Drawing.Point(39, 2);
+            this.PN_DaysHeader.Margin = new System.Windows.Forms.Padding(0);
+            this.PN_DaysHeader.Name = "PN_DaysHeader";
+            this.PN_DaysHeader.Size = new System.Drawing.Size(628, 32);
+            this.PN_DaysHeader.TabIndex = 0;
+            this.PN_DaysHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_DaysHeader_Paint);
+            this.PN_DaysHeader.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PN_DaysHeader_MouseClick);
+            // 
             // Form_WeekView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,13 +395,13 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_WeekView_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form_WeekView_KeyPress);
             this.PN_Frame.ResumeLayout(false);
-            this.PN_Scroll.ResumeLayout(false);
-            this.PN_Hours.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PB_Fleche)).EndInit();
             this.CM_Event.ResumeLayout(false);
             this.CM_EnteteJour.ResumeLayout(false);
             this.CM_SemaineCourante.ResumeLayout(false);
             this.CM_EnteteHeures.ResumeLayout(false);
+            this.PN_Scroll.ResumeLayout(false);
+            this.PN_Hours.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Fleche)).EndInit();
             this.ResumeLayout(false);
 
         }
