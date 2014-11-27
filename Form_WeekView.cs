@@ -483,7 +483,8 @@ namespace Compact_Agenda
         }
         private void Increment_Month()
         {
-            _CurrentWeek = _CurrentWeek.AddMonths(1);
+
+            _CurrentWeek = _CurrentWeek.AddDays(28);
             GetWeekEvents();
             PN_Content.Refresh();
             PN_DaysHeader.Refresh();
@@ -492,7 +493,7 @@ namespace Compact_Agenda
 
         private void Decrement_Month()
         {
-            _CurrentWeek = _CurrentWeek.AddMonths(-1);
+            _CurrentWeek = _CurrentWeek.AddDays(-28);
             GetWeekEvents();
             PN_Content.Refresh();
             PN_DaysHeader.Refresh();
@@ -906,7 +907,6 @@ namespace Compact_Agenda
                     _CurrentWeek = _CurrentWeek.AddDays(nbDeSemaines * 7);
                     GetWeekEvents();
                 }
-
                 PN_Content.Refresh();
                 PN_DaysHeader.Refresh();
             }
