@@ -305,12 +305,12 @@
             // 
             // FBTN_Close
             // 
-            this.FBTN_Close.BackgroundImage = global::Compact_Agenda.Properties.Resources.ICON_Annuler_Neutral;
+            this.FBTN_Close.BackgroundImage = global::Compact_Agenda.Properties.Resources.Quitter;
             this.FBTN_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FBTN_Close.ImageClick = global::Compact_Agenda.Properties.Resources.ICON_Annuler_Click;
-            this.FBTN_Close.ImageDisable = global::Compact_Agenda.Properties.Resources.ICON_Annuler_Disable;
-            this.FBTN_Close.ImageNeutral = global::Compact_Agenda.Properties.Resources.ICON_Annuler_Neutral;
-            this.FBTN_Close.ImageOver = global::Compact_Agenda.Properties.Resources.ICON_Annuler_Over;
+            this.FBTN_Close.ImageClick = global::Compact_Agenda.Properties.Resources.Quitter_Click;
+            this.FBTN_Close.ImageDisable = global::Compact_Agenda.Properties.Resources.Quitter;
+            this.FBTN_Close.ImageNeutral = global::Compact_Agenda.Properties.Resources.Quitter;
+            this.FBTN_Close.ImageOver = global::Compact_Agenda.Properties.Resources.Quitter_Over;
             this.FBTN_Close.Location = new System.Drawing.Point(309, 264);
             this.FBTN_Close.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FBTN_Close.Name = "FBTN_Close";
@@ -320,12 +320,12 @@
             // 
             // FBTN_Accepter
             // 
-            this.FBTN_Accepter.BackgroundImage = global::Compact_Agenda.Properties.Resources.ICON_Accepter_Neutral;
+            this.FBTN_Accepter.BackgroundImage = global::Compact_Agenda.Properties.Resources.Accepter;
             this.FBTN_Accepter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FBTN_Accepter.ImageClick = global::Compact_Agenda.Properties.Resources.ICON_Accepter_Click;
-            this.FBTN_Accepter.ImageDisable = global::Compact_Agenda.Properties.Resources.ICON_Accepter_Disable;
-            this.FBTN_Accepter.ImageNeutral = global::Compact_Agenda.Properties.Resources.ICON_Accepter_Neutral;
-            this.FBTN_Accepter.ImageOver = global::Compact_Agenda.Properties.Resources.ICON_Accepter_Over;
+            this.FBTN_Accepter.ImageClick = global::Compact_Agenda.Properties.Resources.Accepter_Click;
+            this.FBTN_Accepter.ImageDisable = global::Compact_Agenda.Properties.Resources.Accepter;
+            this.FBTN_Accepter.ImageNeutral = global::Compact_Agenda.Properties.Resources.Accepter;
+            this.FBTN_Accepter.ImageOver = global::Compact_Agenda.Properties.Resources.Accepter_Over;
             this.FBTN_Accepter.Location = new System.Drawing.Point(351, 264);
             this.FBTN_Accepter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FBTN_Accepter.Name = "FBTN_Accepter";
