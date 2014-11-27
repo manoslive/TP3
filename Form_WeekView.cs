@@ -148,7 +148,7 @@ namespace Compact_Agenda
                 location2 = new Point((int)Math.Round(PN_DaysHeader.Width / 7f * (dayNum + 1)), 0);
                 String headerText = dayNames[dayNum];
                 String headerDate = date.ToShortDateString();
-                if (Convert.ToInt32(DateTime.Now.DayOfWeek) == dayNum && DateTime.Now.Day == date.Day) //si le jour de la semaine est pareille que le jour de semaine actuel, 
+                if (Convert.ToInt32(DateTime.Now.DayOfWeek) == dayNum && DateTime.Now.Day == date.Day && DateTime.Now.Year == date.Year) //si le jour de la semaine est pareille que le jour de semaine actuel, 
                 {
                     pen = new Pen(Properties.Settings.Default.colorPN_Days_Today, (PN_DaysHeader.Width / 7f) - 2);
                     brush = new SolidBrush(Color.Black);
