@@ -581,8 +581,8 @@ namespace Compact_Agenda
                     if (!mouseIsDown)
                         if (PN_Content.Height < PN_Frame.Height * 12)
                         {
-                            PN_Content.Height += 200;
-                            PN_Hours.Height += 200;
+                            PN_Content.Height += 100;
+                            PN_Hours.Height += 100;
                             PN_Content.Refresh();
                             PN_Hours.Refresh();
                         }
@@ -593,8 +593,8 @@ namespace Compact_Agenda
                         if (!mouseIsDown)
                             if (PN_Content.Height > (PN_Frame.Height))
                             {
-                                PN_Content.Height -= 200;
-                                PN_Hours.Height -= 200;
+                                PN_Content.Height -= 100;
+                                PN_Hours.Height -= 100;
                                 PN_Content.Refresh();
                                 PN_Hours.Refresh();
                             }
