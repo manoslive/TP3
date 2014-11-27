@@ -972,10 +972,5 @@ namespace Compact_Agenda
                 this.Close();
             }
         }
-
-        private void ZS_ZoomMaster_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

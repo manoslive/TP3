@@ -343,7 +343,6 @@
             // 
             // ZS_ZoomMaster
             // 
-            this.ZS_ZoomMaster.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ZS_ZoomMaster.BackColor = System.Drawing.Color.White;
             this.ZS_ZoomMaster.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ZS_ZoomMaster.BackgroundImage")));
             this.ZS_ZoomMaster.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;

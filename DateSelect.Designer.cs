@@ -37,7 +37,7 @@
             // DTP_DateSemaineCourante
             // 
             this.DTP_DateSemaineCourante.Location = new System.Drawing.Point(51, 27);
-            this.DTP_DateSemaineCourante.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DTP_DateSemaineCourante.Margin = new System.Windows.Forms.Padding(2);
             this.DTP_DateSemaineCourante.Name = "DTP_DateSemaineCourante";
             this.DTP_DateSemaineCourante.Size = new System.Drawing.Size(135, 20);
             this.DTP_DateSemaineCourante.TabIndex = 0;
@@ -92,8 +92,10 @@
             this.Controls.Add(this.FBTN_Ok);
             this.Controls.Add(this.FBTN_Cancel);
             this.Controls.Add(this.DTP_DateSemaineCourante);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(249, 140);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(249, 140);
             this.Name = "DateSelect";
             this.Text = "DateSelect";
