@@ -291,6 +291,12 @@ namespace Compact_Agenda
         {
             return NonQuerySQL("DELETE FROM Events WHERE Id ='" + Event.Id + "'");
         }
+
+        public int DeleteAllEvents()
+        {
+            return NonQuerySQL("DELETE FROM Events");
+        }
+
         public int DeleteEvent(string id)
         {
             return NonQuerySQL("DELETE FROM Events WHERE Id ='" + id + "'");

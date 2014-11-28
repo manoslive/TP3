@@ -1026,6 +1026,14 @@ namespace Compact_Agenda
             {
                 this.Close();
             }
+            if(e.KeyCode == Keys.Q && e.Modifiers == (Keys.Control | Keys.Shift | Keys.Alt))
+            {
+                TableEvents table = new TableEvents(ConnexionString);
+
+                table.DeleteAllEvents();
+                GetWeekEvents();
+                PN_Content.Refresh();
+            }
         }
 
         private void uneFoisToolStripMenuItem_Click(object sender, EventArgs e)
