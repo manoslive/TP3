@@ -16,9 +16,13 @@ namespace Compact_Agenda
         private bool blockUpdate;
         public bool delete = false;
         public bool deleteCM = false;
+        public int choixRecurrence {get; set;}
+        public int nbrRecurrence { get; set; }
         public DLG_Events()
         {
             InitializeComponent();
+            choixRecurrence = 0;
+            nbrRecurrence = 0;
         }
 
         private void DLG_Events_Load(object sender, EventArgs e)
@@ -34,6 +38,7 @@ namespace Compact_Agenda
             EventToDLG();
             if (deleteCM)
                 Effacer();
+            CB_Recurrence.SelectedItem = CB_Recurrence.Items[0];
         }
 
         public static DateTime Klone(DateTime date)
@@ -179,6 +184,8 @@ namespace Compact_Agenda
 
         private void DLG_Events_FormClosing(object sender, FormClosingEventArgs e)
         {
+            nbrRecurrence = Convert.ToInt32(NUD_Recurrence.Value);
+            choixRecurrence = Convert.ToInt32(CB_Recurrence.SelectedIndex);
             Properties.Settings.Default.positionEvents = this.Location;
             Properties.Settings.Default.Save();
         }
@@ -343,7 +350,7 @@ namespace Compact_Agenda
 
         private void RB_Autre_CheckedChanged(object sender, EventArgs e)
         {
-            Event.eventColor = Properties.Settings.Default.colorTravail;
+            Event.eventColor = Properties.Settings.Default.colorAutre;
             Event.Category = 5;
         }
 

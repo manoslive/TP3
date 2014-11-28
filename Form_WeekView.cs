@@ -520,14 +520,51 @@ namespace Compact_Agenda
             Increment_Week();
         }
 
-        private void DeleteModif(bool provenanceCM)
+        private void RecurrenceUneFois()
+        {
+            TableEvents tableevents = new TableEvents(ConnexionString);
+            Event duplicata = evenement.TargetEvent;
+            duplicata.Starting = duplicata.Starting.AddHours(1);
+            duplicata.Ending = duplicata.Ending.AddHours(1);
+            tableevents.AddEvent(duplicata);
+        }
+
+        private void RecurrenceQuotidienne(int nbrRecurrence)
+        {
+            TableEvents tableevents = new TableEvents(ConnexionString);
+            Event duplicata = evenement.TargetEvent;
+            for (int i = 1; i <= nbrRecurrence; i++)
+            {
+                duplicata.Starting = duplicata.Starting.AddDays(1);
+                duplicata.Ending = duplicata.Ending.AddDays(1);
+                tableevents.AddEvent(duplicata);
+            }
+        }
+        private void ChoixRecurrence(int choix, int nbrRecurrence)
+        {
+            switch (choix)
+            {
+                case 1: // Une fois
+                    RecurrenceUneFois();
+                    break;
+                case 2: // 7 jours
+                    RecurrenceQuotidienne(nbrRecurrence);
+                    break;
+                case 3: // Un mois
+                    break;
+                case 4: // Un an
+                    break;
+            }
+        }
+
+        private void DeleteModif()
         {
             DLG_Events dlg = new DLG_Events();
             dlg.Event = evenement.TargetEvent;
-            if (provenanceCM)
-                dlg.deleteCM = true;
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+
+
                 if (dlg.delete)
                 {
                     TableEvents tableEvents = new TableEvents(ConnexionString);
@@ -540,7 +577,9 @@ namespace Compact_Agenda
                     TableEvents tableEvents = new TableEvents(ConnexionString);
                     tableEvents.UpdateEventRecord(dlg.Event);
                 }
+                ChoixRecurrence(dlg.choixRecurrence, dlg.nbrRecurrence);
             }
+
             GetWeekEvents();
             PN_Content.Refresh();
         }
@@ -549,8 +588,7 @@ namespace Compact_Agenda
         {
             if ((evenement.TargetEvent != null) && (evenement.TargetPart == TargetPart.Inside) && (e.Button == MouseButtons.Left))
             {
-                bool provientCM = false;
-                DeleteModif(provientCM);
+                DeleteModif();
             }
         }
         private void PN_Content_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -568,7 +606,7 @@ namespace Compact_Agenda
                 case Keys.Left:
                     //action
                     break;
-                    case Keys.Control:
+                case Keys.Control:
                 case Keys.Q:
                     break;
             }
@@ -602,8 +640,8 @@ namespace Compact_Agenda
                     }
                     break;
                 case Keys.Up: // Augmente de un le mois de 1
-                        if (!mouseIsDown)
-                            Increment_Month();
+                    if (!mouseIsDown)
+                        Increment_Month();
                     break;
                 case Keys.Down: // Réduit de un le mois de 1
                     {
@@ -646,10 +684,10 @@ namespace Compact_Agenda
                                         "Ctrl+Q: Quitter le programme");
                     }
                     break;
-            }                    
+            }
             bool result = base.ProcessCmdKey(ref msg, keyData);
-                    PN_Scroll.Focus();
-                    return result;
+            PN_Scroll.Focus();
+            return result;
         }
 
         private void PN_Content_Resize(object sender, EventArgs e)
@@ -675,14 +713,19 @@ namespace Compact_Agenda
 
         private void CMI_Modifier_Click(object sender, EventArgs e)
         {
-            bool provientCM = false;
-            DeleteModif(provientCM);
+            DeleteModif();
         }
 
         private void CMI_Effacer_Click(object sender, EventArgs e)
         {
-            bool provenanceCM = true;
-            DeleteModif(provenanceCM);
+            if (MessageBox.Show("Êtes-vous certain de vouloir supprimer cette événement?", "Attention", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                TableEvents tableevents = new TableEvents(ConnexionString);
+                tableevents.DeleteEvent(evenement.TargetEvent);
+                GetWeekEvents();
+                PN_Content.Refresh();
+            }
+
         }
 
         private void CMI_Reporter_Click(object sender, EventArgs e)
@@ -697,15 +740,7 @@ namespace Compact_Agenda
         }
         private void CMI_Dupliquer_Click(object sender, EventArgs e)
         {
-            TableEvents tableevents = new TableEvents(ConnexionString); // alex was here
-            Event duplicata = evenement.TargetEvent;
 
-            duplicata.Starting = duplicata.Starting.AddHours(1);
-            duplicata.Ending = duplicata.Ending.AddHours(1);
-            tableevents.AddEvent(duplicata);
-
-            GetWeekEvents();
-            PN_Content.Refresh();
         }
 
         private void PN_DaysHeader_MouseClick(object sender, MouseEventArgs e)
@@ -819,7 +854,7 @@ namespace Compact_Agenda
         private void PN_Hours_MouseEnter(object sender, EventArgs e)
         {
             ZS_ZoomMaster.Visible = true;
-            Point zoom = new Point(0, Cursor.Position.Y-100);
+            Point zoom = new Point(0, Cursor.Position.Y - 100);
             ZS_ZoomMaster.Location = zoom;
         }
 
@@ -971,6 +1006,11 @@ namespace Compact_Agenda
             {
                 this.Close();
             }
+        }
+
+        private void uneFoisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
