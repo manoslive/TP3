@@ -407,12 +407,15 @@ namespace Compact_Agenda
         }
         private void NUD_OnChange()
         {
-            if (NUD_FinHeure.Value >= 23 && NUD_DebutHeure.Value >= 23)
+            if (NUD_FinHeure.Value >= 23)
             {
-                NUD_FinHeure.Value = 23;
-                NUD_DebutHeure.Value = 23;
+                NUD_FinHeure.Value = 23;            
                 if (NUD_FinMinute.Value > 55)
                     NUD_FinMinute.Value = 55;
+            }
+            if( NUD_DebutHeure.Value >= 23)
+            {
+                NUD_DebutHeure.Value = 23;
                 if (NUD_DebutMinute.Value > 25)
                     NUD_DebutMinute.Value = 25;
             }
@@ -432,9 +435,9 @@ namespace Compact_Agenda
                     }
                 }
             }
-            else if (NUD_FinHeure.Value == (NUD_DebutHeure.Value + 1))
+            if (NUD_FinHeure.Value == (NUD_DebutHeure.Value + 1))
             {
-                if (NUD_FinMinute.Value <= 30 && NUD_DebutMinute.Value >= 30)
+                if ((NUD_FinMinute.Value + 30) <  NUD_DebutMinute.Value )
                 {
                     NUD_FinMinute.Value = NUD_DebutMinute.Value - 30;
                 }
