@@ -266,24 +266,28 @@
             this.quotidiennementToolStripMenuItem.Name = "quotidiennementToolStripMenuItem";
             this.quotidiennementToolStripMenuItem.Size = new System.Drawing.Size(261, 30);
             this.quotidiennementToolStripMenuItem.Text = "... Quotidiennement";
+            this.quotidiennementToolStripMenuItem.Click += new System.EventHandler(this.quotidiennementToolStripMenuItem_Click);
             // 
             // hebdomadairementToolStripMenuItem
             // 
             this.hebdomadairementToolStripMenuItem.Name = "hebdomadairementToolStripMenuItem";
             this.hebdomadairementToolStripMenuItem.Size = new System.Drawing.Size(261, 30);
             this.hebdomadairementToolStripMenuItem.Text = "... Hebdomadairement";
+            this.hebdomadairementToolStripMenuItem.Click += new System.EventHandler(this.hebdomadairementToolStripMenuItem_Click);
             // 
             // mensuellementToolStripMenuItem
             // 
             this.mensuellementToolStripMenuItem.Name = "mensuellementToolStripMenuItem";
             this.mensuellementToolStripMenuItem.Size = new System.Drawing.Size(261, 30);
             this.mensuellementToolStripMenuItem.Text = "... Mensuellement";
+            this.mensuellementToolStripMenuItem.Click += new System.EventHandler(this.mensuellementToolStripMenuItem_Click);
             // 
             // annuellementToolStripMenuItem
             // 
             this.annuellementToolStripMenuItem.Name = "annuellementToolStripMenuItem";
             this.annuellementToolStripMenuItem.Size = new System.Drawing.Size(261, 30);
             this.annuellementToolStripMenuItem.Text = "... Annuellement";
+            this.annuellementToolStripMenuItem.Click += new System.EventHandler(this.annuellementToolStripMenuItem_Click);
             // 
             // CM_EnteteJour
             // 

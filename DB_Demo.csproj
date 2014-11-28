@@ -85,6 +85,12 @@
     </Compile>
     <Compile Include="Event.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="Form_Nbr_Recurrences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Nbr_Recurrences.Designer.cs">
+      <DependentUpon>Form_Nbr_Recurrences.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_WeekView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DLG_Events.resx">
       <DependentUpon>DLG_Events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Nbr_Recurrences.resx">
+      <DependentUpon>Form_Nbr_Recurrences.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_WeekView.resx">
       <DependentUpon>Form_WeekView.cs</DependentUpon>

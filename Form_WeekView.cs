@@ -524,9 +524,11 @@ namespace Compact_Agenda
         {
             TableEvents tableevents = new TableEvents(ConnexionString);
             Event duplicata = evenement.TargetEvent;
-            duplicata.Starting = duplicata.Starting.AddHours(1);
-            duplicata.Ending = duplicata.Ending.AddHours(1);
+            duplicata.Starting = duplicata.Starting.AddHours(0.5);
+            duplicata.Ending = duplicata.Ending.AddHours(0.5);
             tableevents.AddEvent(duplicata);
+            GetWeekEvents();
+            PN_Content.Refresh();
         }
 
         private void RecurrenceQuotidienne(int nbrRecurrence)
@@ -538,22 +540,44 @@ namespace Compact_Agenda
                 duplicata.Starting = duplicata.Starting.AddDays(1);
                 duplicata.Ending = duplicata.Ending.AddDays(1);
                 tableevents.AddEvent(duplicata);
+                GetWeekEvents();
+                PN_Content.Refresh();
             }
         }
-        private void ChoixRecurrence(int choix, int nbrRecurrence)
+
+        private void RecurrenceHebdomadaire(int nbrRecurrence)
         {
-            switch (choix)
+            TableEvents tableevents = new TableEvents(ConnexionString);
+            Event duplicata = evenement.TargetEvent;
+            for (int i = 1; i <= nbrRecurrence; i++)
             {
-                case 1: // Une fois
-                    RecurrenceUneFois();
-                    break;
-                case 2: // 7 jours
-                    RecurrenceQuotidienne(nbrRecurrence);
-                    break;
-                case 3: // Un mois
-                    break;
-                case 4: // Un an
-                    break;
+                duplicata.Starting = duplicata.Starting.AddDays(7);
+                duplicata.Ending = duplicata.Ending.AddDays(7);
+                tableevents.AddEvent(duplicata);
+            }
+        }
+
+        private void RecurrenceMensuelle(int nbrRecurrence)
+        {
+            TableEvents tableevents = new TableEvents(ConnexionString);
+            Event duplicata = evenement.TargetEvent;
+            for (int i = 1; i <= nbrRecurrence; i++)
+            {
+                duplicata.Starting = duplicata.Starting.AddDays(28);
+                duplicata.Ending = duplicata.Ending.AddDays(28);
+                tableevents.AddEvent(duplicata);
+            }
+        }
+
+        private void RecurrenceAnnuelle(int nbrRecurrence)
+        {
+            TableEvents tableevents = new TableEvents(ConnexionString);
+            Event duplicata = evenement.TargetEvent;
+            for (int i = 1; i <= nbrRecurrence; i++)
+            {
+                duplicata.Starting = duplicata.Starting.AddDays(364);
+                duplicata.Ending = duplicata.Ending.AddDays(364);
+                tableevents.AddEvent(duplicata);
             }
         }
 
@@ -563,8 +587,6 @@ namespace Compact_Agenda
             dlg.Event = evenement.TargetEvent;
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
-
                 if (dlg.delete)
                 {
                     TableEvents tableEvents = new TableEvents(ConnexionString);
@@ -577,9 +599,7 @@ namespace Compact_Agenda
                     TableEvents tableEvents = new TableEvents(ConnexionString);
                     tableEvents.UpdateEventRecord(dlg.Event);
                 }
-                ChoixRecurrence(dlg.choixRecurrence, dlg.nbrRecurrence);
             }
-
             GetWeekEvents();
             PN_Content.Refresh();
         }
@@ -1010,7 +1030,47 @@ namespace Compact_Agenda
 
         private void uneFoisToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            RecurrenceUneFois();
+        }
 
+        private void quotidiennementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Nbr_Recurrences dlg = new Form_Nbr_Recurrences();
+            dlg.ShowDialog();
+            if (dlg.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                RecurrenceQuotidienne(dlg.nbrRecurrence);
+            }
+        }
+
+        private void hebdomadairementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Nbr_Recurrences dlg = new Form_Nbr_Recurrences();
+            dlg.ShowDialog();
+            if (dlg.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                RecurrenceHebdomadaire(dlg.nbrRecurrence);
+            }
+        }
+
+        private void mensuellementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Nbr_Recurrences dlg = new Form_Nbr_Recurrences();
+            dlg.ShowDialog();
+            if (dlg.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                RecurrenceMensuelle(dlg.nbrRecurrence);
+            }
+        }
+
+        private void annuellementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Nbr_Recurrences dlg = new Form_Nbr_Recurrences();
+            dlg.ShowDialog();
+            if (dlg.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                RecurrenceAnnuelle(dlg.nbrRecurrence);
+            }
         }
     }
 }

@@ -57,9 +57,6 @@
             this.NUD_FinMinute = new System.Windows.Forms.NumericUpDown();
             this.LB_2PointsDebut = new System.Windows.Forms.Label();
             this.LB_2PointsFin = new System.Windows.Forms.Label();
-            this.CB_Recurrence = new System.Windows.Forms.ComboBox();
-            this.NUD_Recurrence = new System.Windows.Forms.NumericUpDown();
-            this.LB_Recurrence = new System.Windows.Forms.Label();
             this.GB_Categorie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_General)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Travail)).BeginInit();
@@ -71,7 +68,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUD_DebutMinute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_FinHeure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_FinMinute)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUD_Recurrence)).BeginInit();
             this.SuspendLayout();
             // 
             // TBX_Title
@@ -334,7 +330,7 @@
             // NUD_DebutHeure
             // 
             this.NUD_DebutHeure.Location = new System.Drawing.Point(105, 372);
-            this.NUD_DebutHeure.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUD_DebutHeure.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_DebutHeure.Maximum = new decimal(new int[] {
             23,
             0,
@@ -353,7 +349,7 @@
             0,
             0});
             this.NUD_DebutMinute.Location = new System.Drawing.Point(200, 372);
-            this.NUD_DebutMinute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUD_DebutMinute.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_DebutMinute.Minimum = new decimal(new int[] {
             5,
             0,
@@ -367,7 +363,7 @@
             // NUD_FinHeure
             // 
             this.NUD_FinHeure.Location = new System.Drawing.Point(105, 412);
-            this.NUD_FinHeure.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUD_FinHeure.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_FinHeure.Maximum = new decimal(new int[] {
             23,
             0,
@@ -386,7 +382,7 @@
             0,
             0});
             this.NUD_FinMinute.Location = new System.Drawing.Point(200, 412);
-            this.NUD_FinMinute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NUD_FinMinute.Margin = new System.Windows.Forms.Padding(2);
             this.NUD_FinMinute.Minimum = new decimal(new int[] {
             5,
             0,
@@ -417,45 +413,11 @@
             this.LB_2PointsFin.TabIndex = 51;
             this.LB_2PointsFin.Text = ":";
             // 
-            // CB_Recurrence
-            // 
-            this.CB_Recurrence.FormattingEnabled = true;
-            this.CB_Recurrence.Items.AddRange(new object[] {
-            "Aucune",
-            "Une fois",
-            "Quotidiennement",
-            "Hebdomadairement",
-            "Mensuellement",
-            "Annuellement"});
-            this.CB_Recurrence.Location = new System.Drawing.Point(320, 367);
-            this.CB_Recurrence.Name = "CB_Recurrence";
-            this.CB_Recurrence.Size = new System.Drawing.Size(184, 28);
-            this.CB_Recurrence.TabIndex = 52;
-            // 
-            // NUD_Recurrence
-            // 
-            this.NUD_Recurrence.Location = new System.Drawing.Point(320, 413);
-            this.NUD_Recurrence.Name = "NUD_Recurrence";
-            this.NUD_Recurrence.Size = new System.Drawing.Size(63, 26);
-            this.NUD_Recurrence.TabIndex = 53;
-            // 
-            // LB_Recurrence
-            // 
-            this.LB_Recurrence.AutoSize = true;
-            this.LB_Recurrence.Location = new System.Drawing.Point(316, 335);
-            this.LB_Recurrence.Name = "LB_Recurrence";
-            this.LB_Recurrence.Size = new System.Drawing.Size(100, 20);
-            this.LB_Recurrence.TabIndex = 54;
-            this.LB_Recurrence.Text = "Récurrence :";
-            // 
             // DLG_Events
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 451);
-            this.Controls.Add(this.LB_Recurrence);
-            this.Controls.Add(this.NUD_Recurrence);
-            this.Controls.Add(this.CB_Recurrence);
             this.Controls.Add(this.LB_2PointsFin);
             this.Controls.Add(this.LB_2PointsDebut);
             this.Controls.Add(this.NUD_FinMinute);
@@ -498,7 +460,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUD_DebutMinute)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_FinHeure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_FinMinute)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUD_Recurrence)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,8 +496,5 @@
         private System.Windows.Forms.NumericUpDown NUD_FinMinute;
         private System.Windows.Forms.Label LB_2PointsDebut;
         private System.Windows.Forms.Label LB_2PointsFin;
-        private System.Windows.Forms.ComboBox CB_Recurrence;
-        private System.Windows.Forms.NumericUpDown NUD_Recurrence;
-        private System.Windows.Forms.Label LB_Recurrence;
     }
 }
